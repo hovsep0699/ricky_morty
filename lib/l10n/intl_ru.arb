@@ -1,0 +1,26 @@
+{
+  "appName": "Рик и Морти",
+  "nullResponseMessage": "Ответ отсутствует",
+  "validationErrorMessage": "Ошибка валидации",
+  "permissionErrorMessage": "Доступ запрещён",
+  "resourceErrorMessage": "Ресурс не найден или не существует",
+  "requestAccessErrorMessage": "Нет доступа для выполнения запроса",
+  "invalidRequestErrorMessage": "Неверный запрос",
+  "serverSideErrorMessage": "Запрос не выполнен из-за ошибки на сервере",
+  "serverCommunicationErrorMessage": "Ошибка при соединении с сервером",
+  "incorrectCredentialsErrorMessage": "Неверные учетные данные",
+  "conflictErrorMessage": "Ошибка конфликта",
+  "unknownErrorMessage": "Неизвестная ошибка",
+  "responseFailedErrorMessage": "Ошибка ответа с кодом {statusCode}: {message}",
+  "@responseFailedErrorMessage": {
+    "description": "Сообщение об ошибке с кодом ответа и сообщением",
+    "placeholders": {
+      "statusCode": {
+        "type": "int"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  }
+}

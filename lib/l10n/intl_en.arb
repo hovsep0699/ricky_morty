@@ -1,0 +1,26 @@
+{
+  "appName": "Ricky and Morty",
+  "nullResponseMessage": "Response is null",
+  "validationErrorMessage": "Validation error",
+  "permissionErrorMessage": "Permission denied",
+  "resourceErrorMessage": "Resource was not found or does not exist",
+  "requestAccessErrorMessage": "No Access to perform the request",
+  "invalidRequestErrorMessage": "Invalid Request",
+  "serverSideErrorMessage": "Request failed due to server-side",
+  "serverCommunicationErrorMessage": "Error while communicating to the server",
+  "incorrectCredentialsErrorMessage": "Incorrect credentials",
+  "conflictErrorMessage": "Conflict error",
+  "unknownErrorMessage": "Unknown Error",
+  "responseFailedErrorMessage": "Response failed with status code {statusCode}: {message}",
+  "@responseFailedErrorMessage": {
+    "description": "Response failed message with status code and actual message",
+    "placeholders": {
+      "statusCode": {
+        "type": "int"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  }
+}
