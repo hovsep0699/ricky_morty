@@ -20,6 +20,7 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
+
   @override
   void dispose() {
     closeBoxes();

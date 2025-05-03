@@ -54,13 +54,141 @@ class AppLocalizations {
   static AppLocalizations? maybeOf(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
+
+  /// `Ricky and Morty`
+  String get appName {
+    return Intl.message('Ricky and Morty', name: 'appName', desc: '', args: []);
+  }
+
+  /// `Response is null`
+  String get nullResponseMessage {
+    return Intl.message(
+      'Response is null',
+      name: 'nullResponseMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Validation error`
+  String get validationErrorMessage {
+    return Intl.message(
+      'Validation error',
+      name: 'validationErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission denied`
+  String get permissionErrorMessage {
+    return Intl.message(
+      'Permission denied',
+      name: 'permissionErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resource was not found or does not exist`
+  String get resourceErrorMessage {
+    return Intl.message(
+      'Resource was not found or does not exist',
+      name: 'resourceErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Access to perform the request`
+  String get requestAccessErrorMessage {
+    return Intl.message(
+      'No Access to perform the request',
+      name: 'requestAccessErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Request`
+  String get invalidRequestErrorMessage {
+    return Intl.message(
+      'Invalid Request',
+      name: 'invalidRequestErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request failed due to server-side`
+  String get serverSideErrorMessage {
+    return Intl.message(
+      'Request failed due to server-side',
+      name: 'serverSideErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error while communicating to the server`
+  String get serverCommunicationErrorMessage {
+    return Intl.message(
+      'Error while communicating to the server',
+      name: 'serverCommunicationErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Incorrect credentials`
+  String get incorrectCredentialsErrorMessage {
+    return Intl.message(
+      'Incorrect credentials',
+      name: 'incorrectCredentialsErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Conflict error`
+  String get conflictErrorMessage {
+    return Intl.message(
+      'Conflict error',
+      name: 'conflictErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown Error`
+  String get unknownErrorMessage {
+    return Intl.message(
+      'Unknown Error',
+      name: 'unknownErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Response failed with status code {statusCode}: {message}`
+  String responseFailedErrorMessage(int statusCode, String message) {
+    return Intl.message(
+      'Response failed with status code $statusCode: $message',
+      name: 'responseFailedErrorMessage',
+      desc: 'Response failed message with status code and actual message',
+      args: [statusCode, message],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
-    return const <Locale>[Locale.fromSubtags(languageCode: 'en')];
+    return const <Locale>[
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ru'),
+    ];
   }
 
   @override

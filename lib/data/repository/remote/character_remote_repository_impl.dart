@@ -5,6 +5,7 @@ import '../../../domain/repository/remote/character_remote_repository.dart';
 import '../../data_source/remote/character_remote_data_source.dart';
 
 class CharacterRemoteRepositoryImpl implements CharacterRemoteRepository {
+
   CharacterRemoteRepositoryImpl(this.characterDataSource);
 
   final CharacterRemoteDataSource characterDataSource;
