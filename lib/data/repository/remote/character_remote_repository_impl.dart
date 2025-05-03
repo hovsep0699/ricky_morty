@@ -11,5 +11,6 @@ class CharacterRemoteRepositoryImpl implements CharacterRemoteRepository {
   final CharacterRemoteDataSource characterDataSource;
 
   @override
-  Future<Either<Exception, Character>> getCharacters() async => characterDataSource.getCharacters();
+  Future<Either<Exception, Character>> getCharacters(int page) async =>
+      characterDataSource.getCharacters(page);
 }

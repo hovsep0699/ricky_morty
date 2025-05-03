@@ -2,7 +2,6 @@ import 'package:auto_mappr_annotation/auto_mappr_annotation.dart';
 
 import '../../domain/entity/character.dart';
 import '../dto/character_dto.dart';
-import '../model/local/character_details_box.dart';
 import 'character_mapper.auto_mappr.dart';
 
 
@@ -12,11 +11,5 @@ import 'character_mapper.auto_mappr.dart';
   MapType<CharacterDetailsDto, CharacterDetails>(),
   MapType<CharacterLocationDto, CharacterLocation>(),
   MapType<CharacterOriginDto, CharacterOrigin>(),
-  MapType<CharacterDetails, CharacterDetailsBox>(),
-  MapType<CharacterDetailsBox, CharacterDetails>(),
-  MapType<CharacterLocation, CharacterLocationBox>(),
-  MapType<CharacterLocationBox, CharacterLocation>(),
-  MapType<CharacterOrigin, CharacterOriginBox>(),
-  MapType<CharacterOriginBox, CharacterOrigin>(),
 ])
 class CharacterMapper extends $CharacterMapper {}

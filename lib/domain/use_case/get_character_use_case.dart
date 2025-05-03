@@ -8,5 +8,5 @@ class GetCharactersUseCase {
 
   final CharacterRemoteRepository characterRemoteRepository;
 
-  Future<Either<Exception, Character>> call() async => characterRemoteRepository.getCharacters();
+  Future<Either<Exception, Character>> call(int page) async => characterRemoteRepository.getCharacters(page);
 }

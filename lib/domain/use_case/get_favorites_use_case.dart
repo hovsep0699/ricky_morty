@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
 
 import '../entity/character.dart';
-import '../repository/local/character_local_repository.dart';
+import '../repository/local/favorite_local_repository.dart';
 
 class GetFavoritesUseCase {
-  const GetFavoritesUseCase(this.characterLocalRepository);
+  const GetFavoritesUseCase(this.favoriteLocalRepository);
 
-  final CharacterLocalRepository characterLocalRepository;
+  final FavoriteLocalRepository favoriteLocalRepository;
 
   Future<Either<Exception, List<CharacterDetails>>> call() async =>
-      characterLocalRepository.getAllFavorites();
+      favoriteLocalRepository.getAllFavorites();
 
   Future<Either<Exception, CharacterDetails?>> getFavorite(int id) async =>
-      characterLocalRepository.getFavorite(id);
+      favoriteLocalRepository.getFavorite(id);
 }

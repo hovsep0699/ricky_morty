@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'app.dart';
+import 'core/hive_adapters.dart';
+import 'core/hive_boxes.dart';
 import 'core/themes/app_colors.dart';
-import 'data/model/local/character_details_box.dart';
 import 'di/service_locator.dart';
 
 Future<void> initializeHive() async {
   await Hive.initFlutter();
-  Hive.registerAdapter<CharacterDetailsBox>(CharacterDetailsBoxAdapter());
-  Hive.registerAdapter<CharacterLocationBox>(CharacterLocationBoxAdapter());
-  Hive.registerAdapter<CharacterOriginBox>(CharacterOriginBoxAdapter());
+  provideHiveAdapters();
+  await openHiveBoxes();
 }
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeHive();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -29,8 +30,7 @@ void main() async {
       systemNavigationBarColor: lightColorScheme.surface,
       systemNavigationBarIconBrightness: Brightness.dark,
       systemNavigationBarDividerColor: lightColorScheme.surface));
-  await initializeHive();
-  await configureDependencies();
+  configureDependencies();
 
   runApp(const App());
 

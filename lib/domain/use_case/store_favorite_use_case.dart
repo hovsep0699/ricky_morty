@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 
 import '../entity/character.dart';
-import '../repository/local/character_local_repository.dart';
+import '../repository/local/favorite_local_repository.dart';
 
 class StoreFavoriteUseCase {
-  const StoreFavoriteUseCase(this.characterLocalRepository);
+  const StoreFavoriteUseCase(this.favoriteLocalRepository);
 
-  final CharacterLocalRepository characterLocalRepository;
+  final FavoriteLocalRepository favoriteLocalRepository;
 
   Future<Either<Exception, void>> call(CharacterDetails details) async =>
-      characterLocalRepository.addToFavorites(details);
+      favoriteLocalRepository.addToFavorites(details);
 }

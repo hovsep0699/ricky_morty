@@ -10,18 +10,10 @@ class CharacterLocalRepositoryImpl implements CharacterLocalRepository {
   final CharacterLocalDataSource characterLocalDataSource;
 
   @override
-  Future<Either<Exception, void>> addToFavorites(CharacterDetails details) =>
-      characterLocalDataSource.addToFavorites(details);
+  Future<Either<Exception, void>> storeCharacter(Character character) =>
+      characterLocalDataSource.storeCharacter(character);
 
   @override
-  Future<Either<Exception, List<CharacterDetails>>> getAllFavorites() =>
-      characterLocalDataSource.getAllFavorites();
-
-  @override
-  Future<Either<Exception, CharacterDetails?>> getFavorite(int id) =>
-      characterLocalDataSource.getFavorite(id);
-
-  @override
-  Future<Either<Exception, void>> removeFavorite(int id) =>
-      characterLocalDataSource.removeFavorite(id);
+  Future<Either<Exception, Character?>> getCharacter() =>
+      characterLocalDataSource.getCharacter();
 }

@@ -1,8 +1,6 @@
-import '../model/local/character_details_box.dart';
+import '../model/local/character_box.dart';
 
 abstract class CharacterDAO {
-  Future<void> saveCharacter(CharacterDetailsBox characterDetails);
-  Future<CharacterDetailsBox?> getCharacterById(int id);
-  Future<List<CharacterDetailsBox>> getAllCharacters();
-  Future<void> deleteCharacter(int id);
+  Future<void> storeCharacter(CharacterBox character);
+  Future<CharacterBox?> getCharacter();
 }

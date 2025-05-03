@@ -4,7 +4,7 @@ part 'character_details_box.g.dart';
 part 'character_location_box.dart';
 part 'character_origin_box.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 4)
 class CharacterDetailsBox extends HiveObject {
 
   CharacterDetailsBox({

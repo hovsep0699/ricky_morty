@@ -8,7 +8,7 @@ part of 'character_details_box.dart';
 
 class CharacterDetailsBoxAdapter extends TypeAdapter<CharacterDetailsBox> {
   @override
-  final int typeId = 0;
+  final int typeId = 4;
 
   @override
   CharacterDetailsBox read(BinaryReader reader) {
@@ -112,7 +112,7 @@ class CharacterLocationBoxAdapter extends TypeAdapter<CharacterLocationBox> {
 
 class CharacterOriginBoxAdapter extends TypeAdapter<CharacterOriginBox> {
   @override
-  final int typeId = 3;
+  final int typeId = 1;
 
   @override
   CharacterOriginBox read(BinaryReader reader) {

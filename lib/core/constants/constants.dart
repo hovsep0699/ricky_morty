@@ -9,4 +9,6 @@ abstract class Constants {
   static double get defaultDividerEndIndent => 30;
   static double get dividerThickness => 1;
   static double get headerLargeTextSize => 16;
+  static int get defaultPagination => 4;
+  static int get paginationLimit => 4;
 }

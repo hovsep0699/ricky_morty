@@ -1,0 +1,2 @@
+C:/Users/Hovsep/personal/ricky_morty/android/app/.cxx/Debug/706l2k4p/x86/CMakeFiles/edit_cache.dir
+C:/Users/Hovsep/personal/ricky_morty/android/app/.cxx/Debug/706l2k4p/x86/CMakeFiles/rebuild_cache.dir

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,11 +9,15 @@ import '../../../../core/extensions/number_extension.dart';
 import '../../../../core/themes/app_text_styles.dart';
 import '../../../../di/service_locator.dart';
 import '../../../../domain/entity/character.dart';
+import '../../../../domain/use_case/get_cached_character_use_case.dart';
 import '../../../../domain/use_case/get_character_use_case.dart';
 import '../../../../domain/use_case/get_favorites_use_case.dart';
+import '../../../../domain/use_case/store_character_use_case.dart';
 import '../../../../domain/use_case/store_favorite_use_case.dart';
 import '../../../../l10n/localizations_utils.dart';
+import '../../../utils/widget/pagination_widget.dart';
 import '../../../utils/widget/simple_app_bar_widget.dart';
+import '../../internet_checker/bloc/internet_checker_bloc.dart';
 import '../bloc/home_bloc.dart';
 
 @RoutePage()
@@ -21,85 +26,91 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isOnline =
+        context.watch<InternetCheckerCubit>().state.status == InternetCheckerStatus.online;
+    print("LLL::: $isOnline");
     return BlocProvider(
       create:
           (_) => HomeBloc(
             getIt<GetCharactersUseCase>(),
             getIt<StoreFavoriteUseCase>(),
             getIt<GetFavoritesUseCase>(),
-          )..add(const HomeEvent.getCharacters()),
-      child: const HomeContent(),
+            getIt<StoreCharacterUseCase>(),
+            getIt<GetCachedCharacterUseCase>(),
+          ),
+      child: HomeContent(isOnline: isOnline),
     );
   }
 }
 
 class HomeContent extends StatefulWidget {
-  const HomeContent({super.key});
+  const HomeContent({super.key, required this.isOnline});
+
+  final bool isOnline;
 
   @override
-  State<HomeContent> createState() => FavoritesContentState();
+  State<HomeContent> createState() => HomeContentState();
 }
 
-class FavoritesContentState extends State<HomeContent> {
-  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
-  final List<CharacterDetails> _favorites = [];
-
+class HomeContentState extends State<HomeContent> {
   @override
   void initState() {
+    context.read<HomeBloc>().add(HomeEvent.getCharacters(internetStatus: widget.isOnline));
     super.initState();
-    final state = context.read<HomeBloc>().state;
-    _favorites.addAll(state.charactersData?.results ?? []);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<HomeBloc, HomeState>(
       listener: (context, state) {
+        print("OOOOOO::: ${state.paginatedCharacters.length}");
         if (state.status == HomeStatus.failure) {
           context.showSnackBarMessage(state.errorMessage ?? appLocalizations.unknownErrorMessage);
-        }
-
-        final oldIds = _favorites.map((e) => e.id).toSet();
-        final newIds = (state.charactersData?.results.map((e) => e.id) ?? []).toSet();
-
-        final removedIds = oldIds.difference(newIds);
-        final addedIds = newIds.difference(oldIds);
-
-        for (final id in removedIds) {
-          final index = _favorites.indexWhere((e) => e.id == id);
-          if (index != -1) {
-            final removedItem = _favorites.removeAt(index);
-            _listKey.currentState?.removeItem(
-              index,
-              (context, animation) => _buildAnimatedItem(context, removedItem, animation),
-            );
-          }
-        }
-
-        for (final id in addedIds) {
-          final item = state.charactersData?.results.firstWhere((e) => e.id == id);
-          if (item != null) {
-            _favorites.insert(0, item);
-            _listKey.currentState?.insertItem(0);
-          }
         }
       },
       child: Scaffold(
         backgroundColor: ColorScheme.of(context).surface,
         appBar: SimpleAppBarWidget(title: Text(appLocalizations.appName)),
-        body: Padding(
-          padding: Gaps.larger.paddingHorizontal,
-          child:
-              (context.watch<HomeBloc>().state.charactersData?.results.isEmpty ?? true)
-                  ? Center(child: Text('No Available Data', style: body1))
-                  : AnimatedList(
-                    key: _listKey,
-                    initialItemCount: _favorites.length,
-                    itemBuilder:
-                        (context, index, animation) =>
-                            _buildAnimatedItem(context, _favorites[index], animation),
-                  ),
-        ),
+        body:
+            context.watch<HomeBloc>().state.status == HomeStatus.loading
+                ? const Center(child: CircularProgressIndicator())
+                : Padding(
+                  padding: Gaps.larger.paddingHorizontal,
+                  child:
+                      (context.watch<HomeBloc>().state.paginatedCharacters.isEmpty)
+                          ? Center(child: Text('No Data Available', style: body1))
+                          : RefreshIndicator(
+                            onRefresh: () async {
+                              context.read<HomeBloc>().add(
+                                const HomeEvent.resetPaginationState(pagination: []),
+                              );
+                              context.read<HomeBloc>().add(
+                                HomeEvent.getCharacters(internetStatus: widget.isOnline),
+                              );
+                            },
+                            child: BlocBuilder<HomeBloc, HomeState>(
+                              builder: (context, state) => PaginationWidget(
+                                itemCount: state.paginatedCharacters.length,
+                                isLoading: state.isLoadingMore,
+                                onLoadMore: () async {
+                                  print("KOOOOOO");
+                                  context.read<HomeBloc>().add(
+                                    HomeEvent.loadMoreCharacters(
+                                      internetStatus: widget.isOnline,
+                                      page: state.currentPage + 1,
+                                    ),
+                                  );
+                                },
+                                builder:
+                                    (context, index) => _buildAnimatedItem(
+                                      context,
+                                      state.paginatedCharacters[index],
+                                      const AlwaysStoppedAnimation(1.0),
+                                    ),
+                              ),
+                            ),
+                          ),
+                ),
       ),
     );
   }
@@ -129,16 +140,19 @@ class FavoritesContentState extends State<HomeContent> {
                 Row(
                   children: [
                     ClipOval(
-                      child: Image.network(
-                        detail.image,
+                      child: CachedNetworkImage(
+                        imageUrl: detail.image,
                         width: 48,
                         height: 48,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => const Icon(Icons.person),
+                        errorWidget: (_, __, ___) => const Icon(Icons.person),
                       ),
                     ),
                     Gaps.medium.spaceHorizontal,
-                    Text(detail.name, style: body1),
+                    SizedBox(
+                      width: 200,
+                      child: Text(detail.name, style: body1, overflow: TextOverflow.clip),
+                    ),
                   ],
                 ),
                 Positioned(

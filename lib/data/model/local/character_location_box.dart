@@ -1,7 +1,7 @@
 part of 'character_details_box.dart';
 
 @HiveType(typeId: 2)
-class CharacterLocationBox extends HiveObject{
+class CharacterLocationBox extends HiveObject {
 
   CharacterLocationBox({required this.name, required this.url});
 

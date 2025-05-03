@@ -26,7 +26,6 @@ class ApiClient {
       interceptors: [
         HttpLoggingInterceptor(),
         CustomLoggingInterceptor(),
-        CustomLoggingInterceptor(),
       ],
     );
      _characterService = CharacterService.create(_client);

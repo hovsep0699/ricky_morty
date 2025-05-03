@@ -12,7 +12,6 @@ import 'package:auto_mappr_annotation/auto_mappr_annotation.dart' as _i1;
 
 import '../../domain/entity/character.dart' as _i3;
 import '../dto/character_dto.dart' as _i2;
-import '../model/local/character_details_box.dart' as _i4;
 
 /// {@template package:ricky_morty/data/mapper/character_mapper.dart}
 /// Available mappings:
@@ -21,12 +20,6 @@ import '../model/local/character_details_box.dart' as _i4;
 /// - `CharacterDetailsDto` → `CharacterDetails`.
 /// - `CharacterLocationDto` → `CharacterLocation`.
 /// - `CharacterOriginDto` → `CharacterOrigin`.
-/// - `CharacterDetails` → `CharacterDetailsBox`.
-/// - `CharacterDetailsBox` → `CharacterDetails`.
-/// - `CharacterLocation` → `CharacterLocationBox`.
-/// - `CharacterLocationBox` → `CharacterLocation`.
-/// - `CharacterOrigin` → `CharacterOriginBox`.
-/// - `CharacterOriginBox` → `CharacterOrigin`.
 /// {@endtemplate}
 class $CharacterMapper implements _i1.AutoMapprInterface {
   const $CharacterMapper();
@@ -67,42 +60,6 @@ class $CharacterMapper implements _i1.AutoMapprInterface {
     }
     if ((sourceTypeOf == _typeOf<_i2.CharacterOriginDto>() ||
             sourceTypeOf == _typeOf<_i2.CharacterOriginDto?>()) &&
-        (targetTypeOf == _typeOf<_i3.CharacterOrigin>() ||
-            targetTypeOf == _typeOf<_i3.CharacterOrigin?>())) {
-      return true;
-    }
-    if ((sourceTypeOf == _typeOf<_i3.CharacterDetails>() ||
-            sourceTypeOf == _typeOf<_i3.CharacterDetails?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterDetailsBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterDetailsBox?>())) {
-      return true;
-    }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterDetailsBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterDetailsBox?>()) &&
-        (targetTypeOf == _typeOf<_i3.CharacterDetails>() ||
-            targetTypeOf == _typeOf<_i3.CharacterDetails?>())) {
-      return true;
-    }
-    if ((sourceTypeOf == _typeOf<_i3.CharacterLocation>() ||
-            sourceTypeOf == _typeOf<_i3.CharacterLocation?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterLocationBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterLocationBox?>())) {
-      return true;
-    }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterLocationBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterLocationBox?>()) &&
-        (targetTypeOf == _typeOf<_i3.CharacterLocation>() ||
-            targetTypeOf == _typeOf<_i3.CharacterLocation?>())) {
-      return true;
-    }
-    if ((sourceTypeOf == _typeOf<_i3.CharacterOrigin>() ||
-            sourceTypeOf == _typeOf<_i3.CharacterOrigin?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterOriginBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterOriginBox?>())) {
-      return true;
-    }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterOriginBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterOriginBox?>()) &&
         (targetTypeOf == _typeOf<_i3.CharacterOrigin>() ||
             targetTypeOf == _typeOf<_i3.CharacterOrigin?>())) {
       return true;
@@ -344,78 +301,6 @@ class $CharacterMapper implements _i1.AutoMapprInterface {
           )
           as TARGET);
     }
-    if ((sourceTypeOf == _typeOf<_i3.CharacterDetails>() ||
-            sourceTypeOf == _typeOf<_i3.CharacterDetails?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterDetailsBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterDetailsBox?>())) {
-      if (canReturnNull && model == null) {
-        return null;
-      }
-      return (_map__i3$CharacterDetails_To__i4$CharacterDetailsBox(
-            (model as _i3.CharacterDetails?),
-          )
-          as TARGET);
-    }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterDetailsBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterDetailsBox?>()) &&
-        (targetTypeOf == _typeOf<_i3.CharacterDetails>() ||
-            targetTypeOf == _typeOf<_i3.CharacterDetails?>())) {
-      if (canReturnNull && model == null) {
-        return null;
-      }
-      return (_map__i4$CharacterDetailsBox_To__i3$CharacterDetails(
-            (model as _i4.CharacterDetailsBox?),
-          )
-          as TARGET);
-    }
-    if ((sourceTypeOf == _typeOf<_i3.CharacterLocation>() ||
-            sourceTypeOf == _typeOf<_i3.CharacterLocation?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterLocationBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterLocationBox?>())) {
-      if (canReturnNull && model == null) {
-        return null;
-      }
-      return (_map__i3$CharacterLocation_To__i4$CharacterLocationBox(
-            (model as _i3.CharacterLocation?),
-          )
-          as TARGET);
-    }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterLocationBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterLocationBox?>()) &&
-        (targetTypeOf == _typeOf<_i3.CharacterLocation>() ||
-            targetTypeOf == _typeOf<_i3.CharacterLocation?>())) {
-      if (canReturnNull && model == null) {
-        return null;
-      }
-      return (_map__i4$CharacterLocationBox_To__i3$CharacterLocation(
-            (model as _i4.CharacterLocationBox?),
-          )
-          as TARGET);
-    }
-    if ((sourceTypeOf == _typeOf<_i3.CharacterOrigin>() ||
-            sourceTypeOf == _typeOf<_i3.CharacterOrigin?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterOriginBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterOriginBox?>())) {
-      if (canReturnNull && model == null) {
-        return null;
-      }
-      return (_map__i3$CharacterOrigin_To__i4$CharacterOriginBox(
-            (model as _i3.CharacterOrigin?),
-          )
-          as TARGET);
-    }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterOriginBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterOriginBox?>()) &&
-        (targetTypeOf == _typeOf<_i3.CharacterOrigin>() ||
-            targetTypeOf == _typeOf<_i3.CharacterOrigin?>())) {
-      if (canReturnNull && model == null) {
-        return null;
-      }
-      return (_map__i4$CharacterOriginBox_To__i3$CharacterOrigin(
-            (model as _i4.CharacterOriginBox?),
-          )
-          as TARGET);
-    }
     throw Exception('No ${model.runtimeType} -> $targetTypeOf mapping.');
   }
 
@@ -531,115 +416,6 @@ class $CharacterMapper implements _i1.AutoMapprInterface {
       throw Exception(
         r'Mapping CharacterOriginDto → CharacterOrigin failed because CharacterOriginDto was null, and no default value was provided. '
         r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterOriginDto, CharacterOrigin> to handle null values during mapping.',
-      );
-    }
-    return _i3.CharacterOrigin(name: model.name, url: model.url);
-  }
-
-  _i4.CharacterDetailsBox _map__i3$CharacterDetails_To__i4$CharacterDetailsBox(
-    _i3.CharacterDetails? input,
-  ) {
-    final model = input;
-    if (model == null) {
-      throw Exception(
-        r'Mapping CharacterDetails → CharacterDetailsBox failed because CharacterDetails was null, and no default value was provided. '
-        r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterDetails, CharacterDetailsBox> to handle null values during mapping.',
-      );
-    }
-    return _i4.CharacterDetailsBox(
-      id: model.id,
-      name: model.name,
-      status: model.status,
-      species: model.species,
-      type: model.type,
-      gender: model.gender,
-      origin: _map__i3$CharacterOrigin_To__i4$CharacterOriginBox(model.origin),
-      location: _map__i3$CharacterLocation_To__i4$CharacterLocationBox(
-        model.location,
-      ),
-      image: model.image,
-      episode: model.episode,
-      url: model.url,
-      created: model.created,
-    );
-  }
-
-  _i3.CharacterDetails _map__i4$CharacterDetailsBox_To__i3$CharacterDetails(
-    _i4.CharacterDetailsBox? input,
-  ) {
-    final model = input;
-    if (model == null) {
-      throw Exception(
-        r'Mapping CharacterDetailsBox → CharacterDetails failed because CharacterDetailsBox was null, and no default value was provided. '
-        r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterDetailsBox, CharacterDetails> to handle null values during mapping.',
-      );
-    }
-    return _i3.CharacterDetails(
-      id: model.id,
-      name: model.name,
-      status: model.status,
-      species: model.species,
-      type: model.type,
-      gender: model.gender,
-      origin: _map__i4$CharacterOriginBox_To__i3$CharacterOrigin(model.origin),
-      location: _map__i4$CharacterLocationBox_To__i3$CharacterLocation(
-        model.location,
-      ),
-      image: model.image,
-      episode: model.episode,
-      url: model.url,
-      created: model.created,
-    );
-  }
-
-  _i4.CharacterLocationBox
-  _map__i3$CharacterLocation_To__i4$CharacterLocationBox(
-    _i3.CharacterLocation? input,
-  ) {
-    final model = input;
-    if (model == null) {
-      throw Exception(
-        r'Mapping CharacterLocation → CharacterLocationBox failed because CharacterLocation was null, and no default value was provided. '
-        r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterLocation, CharacterLocationBox> to handle null values during mapping.',
-      );
-    }
-    return _i4.CharacterLocationBox(name: model.name, url: model.url);
-  }
-
-  _i3.CharacterLocation _map__i4$CharacterLocationBox_To__i3$CharacterLocation(
-    _i4.CharacterLocationBox? input,
-  ) {
-    final model = input;
-    if (model == null) {
-      throw Exception(
-        r'Mapping CharacterLocationBox → CharacterLocation failed because CharacterLocationBox was null, and no default value was provided. '
-        r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterLocationBox, CharacterLocation> to handle null values during mapping.',
-      );
-    }
-    return _i3.CharacterLocation(name: model.name, url: model.url);
-  }
-
-  _i4.CharacterOriginBox _map__i3$CharacterOrigin_To__i4$CharacterOriginBox(
-    _i3.CharacterOrigin? input,
-  ) {
-    final model = input;
-    if (model == null) {
-      throw Exception(
-        r'Mapping CharacterOrigin → CharacterOriginBox failed because CharacterOrigin was null, and no default value was provided. '
-        r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterOrigin, CharacterOriginBox> to handle null values during mapping.',
-      );
-    }
-    return _i4.CharacterOriginBox(name: model.name, url: model.url);
-  }
-
-  _i3.CharacterOrigin _map__i4$CharacterOriginBox_To__i3$CharacterOrigin(
-    _i4.CharacterOriginBox? input,
-  ) {
-    final model = input;
-    if (model == null) {
-      throw Exception(
-        r'Mapping CharacterOriginBox → CharacterOrigin failed because CharacterOriginBox was null, and no default value was provided. '
-        r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterOriginBox, CharacterOrigin> to handle null values during mapping.',
       );
     }
     return _i3.CharacterOrigin(name: model.name, url: model.url);

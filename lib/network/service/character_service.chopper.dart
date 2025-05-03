@@ -19,9 +19,15 @@ final class _$CharacterService extends CharacterService {
   final Type definitionType = CharacterService;
 
   @override
-  Future<Response<CharacterDto>> getCharacters() {
+  Future<Response<CharacterDto>> getCharacters({int page = 1}) {
     final Uri $url = Uri.parse('/character');
-    final Request $request = Request('GET', $url, client.baseUrl);
+    final Map<String, dynamic> $params = <String, dynamic>{'page': page};
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
     return client.send<CharacterDto, CharacterDto>($request);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -124,12 +125,12 @@ class FavoritesContentState extends State<FavoritesContent> {
                 Row(
                   children: [
                     ClipOval(
-                      child: Image.network(
-                        detail.image,
+                      child: CachedNetworkImage(
+                        imageUrl: detail.image,
                         width: 48,
                         height: 48,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => const Icon(Icons.person),
+                        errorWidget: (_, __, ___) => const Icon(Icons.person),
                       ),
                     ),
                     Gaps.medium.spaceHorizontal,

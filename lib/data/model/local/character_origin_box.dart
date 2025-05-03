@@ -1,6 +1,6 @@
 part of 'character_details_box.dart';
 
-@HiveType(typeId: 3)
+@HiveType(typeId: 1)
 class CharacterOriginBox extends HiveObject {
 
   CharacterOriginBox({required this.name, required this.url});

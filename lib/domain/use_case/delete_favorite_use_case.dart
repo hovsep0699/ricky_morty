@@ -1,13 +1,12 @@
 import 'package:dartz/dartz.dart';
 
-import '../entity/character.dart';
-import '../repository/local/character_local_repository.dart';
+import '../repository/local/favorite_local_repository.dart';
 
 class DeleteFavoriteUseCase {
-  const DeleteFavoriteUseCase(this.characterLocalRepository);
+  const DeleteFavoriteUseCase(this.favoriteLocalRepository);
 
-  final CharacterLocalRepository characterLocalRepository;
+  final FavoriteLocalRepository favoriteLocalRepository;
 
   Future<Either<Exception, void>> call(int id) async =>
-      characterLocalRepository.removeFavorite(id);
+      favoriteLocalRepository.removeFavorite(id);
 }

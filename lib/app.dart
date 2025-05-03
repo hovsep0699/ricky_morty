@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'core/bloc_providers.dart';
 import 'core/notifier_providers.dart';
 import 'core/notifiers/locale_notifier.dart';
 import 'core/notifiers/theme_notifier.dart';
 import 'core/router/app_router.dart';
 import 'core/themes/app_themes.dart';
-import 'data/service/hive_service.dart';
+import 'data/utils/hive_manager.dart';
 import 'di/service_locator.dart';
 import 'resources/l10n/l10n.dart';
 
@@ -16,8 +17,8 @@ class App extends StatefulWidget {
 
   @override
   State<App> createState() => AppState();
-
 }
+
 class AppState extends State<App> {
 
   @override
@@ -26,7 +27,7 @@ class AppState extends State<App> {
     super.dispose();
   }
 
-  Future<void> closeBoxes() async => getIt<HiveService>().close();
+  Future<void> closeBoxes() async => HiveManager.closeAll();
 
   @override
   Widget build(BuildContext context) {
@@ -55,20 +56,22 @@ class AppContent extends StatelessWidget {
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child: MaterialApp.router(
-        themeMode: initialThemeMode,
-        theme: initialThemeMode == ThemeMode.light ? lightTheme : darkTheme,
-        darkTheme: darkTheme,
-        debugShowCheckedModeBanner: false,
-        locale: initialLanguage,
-        routerConfig: _appRouter.config(includePrefixMatches: false),
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: AppLocalizations.delegate.supportedLocales,
+      child: provideBlocProviders(
+        child: MaterialApp.router(
+          themeMode: initialThemeMode,
+          theme: initialThemeMode == ThemeMode.light ? lightTheme : darkTheme,
+          darkTheme: darkTheme,
+          debugShowCheckedModeBanner: false,
+          locale: initialLanguage,
+          routerConfig: _appRouter.config(includePrefixMatches: false),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.delegate.supportedLocales,
+        ),
       ),
     );
   }

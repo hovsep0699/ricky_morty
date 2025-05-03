@@ -1,30 +1,18 @@
-
-import 'package:hive/hive.dart';
-
-import '../model/local/character_details_box.dart';
+import '../model/local/character_box.dart';
+import '../utils/hive_manager.dart';
 import 'character_dao.dart';
 
 class CharacterDaoImpl implements CharacterDAO {
-  CharacterDaoImpl(this._characterBox);
-  final Box<CharacterDetailsBox> _characterBox;
+  CharacterDaoImpl();
 
   @override
-  Future<void> saveCharacter(CharacterDetailsBox characterDetails) async {
-    await _characterBox.put(characterDetails.id, characterDetails);
+  Future<void> storeCharacter(CharacterBox character) async {
+    await HiveManager.characterBox.clear();
+    await HiveManager.characterBox.add(character);
   }
 
   @override
-  Future<CharacterDetailsBox?> getCharacterById(int id) async {
-    return _characterBox.get(id);
-  }
-
-  @override
-  Future<List<CharacterDetailsBox>> getAllCharacters() async {
-    return _characterBox.values.toList();
-  }
-
-  @override
-  Future<void> deleteCharacter(int id) async {
-    await _characterBox.delete(id);
+  Future<CharacterBox?> getCharacter() async {
+    return HiveManager.characterBox.getAt(0);
   }
 }

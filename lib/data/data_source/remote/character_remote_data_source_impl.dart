@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../core/constants/constants.dart';
 import '../../../core/utils/request_manager.dart';
 import '../../../domain/entity/character.dart';
 import '../../../network/service/character_service.dart';
@@ -13,10 +14,10 @@ class CharacterRemoteDataSourceImpl implements CharacterRemoteDataSource {
   CharacterService characterService;
 
   @override
-  Future<Either<Exception, Character>> getCharacters() async {
+  Future<Either<Exception, Character>> getCharacters(int page) async {
     final mapper = CharacterMapper();
     return RequestManager.request(
-        onRequest: () => characterService.getCharacters(),
+        onRequest: () => characterService.getCharacters(page: page),
         onConvert: (response) => mapper.convert<CharacterDto, Character>(response));
   }
 }

@@ -36,10 +36,15 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider: ^2.1.5
-#  freezed: ^2.5.8
+  connectivity_plus: ^6.1.4
+  internet_connection_checker: ^3.0.1
+  cached_network_image: ^3.4.1
+  freezed: ^2.5.8
 
-dependency_overrides:
-  source_gen: ^2.0.0
+
+# uncomment for hive generator
+#dependency_overrides:
+#  source_gen: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -48,7 +53,7 @@ dev_dependencies:
   auto_mappr: ^2.8.0
   auto_route_generator: ^10.0.1
   flutter_gen_runner: ^5.10.0
-  hive_generator: ^2.0.1
+#  hive_generator: ^2.0.1
   chopper_generator: ^8.1.0
   flutter_lints: ^5.0.0
 
