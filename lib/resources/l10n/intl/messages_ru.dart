@@ -35,6 +35,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidRequestErrorMessage": MessageLookupByLibrary.simpleMessage(
       "Неверный запрос",
     ),
+    "lblEmptyFavorites": MessageLookupByLibrary.simpleMessage(
+      "Пока нет избранных",
+    ),
+    "lblFavorites": MessageLookupByLibrary.simpleMessage("Избранное"),
+    "lblNoDataAvailable": MessageLookupByLibrary.simpleMessage(
+      "На данный момент данных нет",
+    ),
+    "lblSettings": MessageLookupByLibrary.simpleMessage("Настройки"),
     "nullResponseMessage": MessageLookupByLibrary.simpleMessage(
       "Ответ отсутствует",
     ),

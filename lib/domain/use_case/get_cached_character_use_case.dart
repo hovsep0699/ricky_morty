@@ -8,5 +8,5 @@ class GetCachedCharacterUseCase {
 
   final CharacterLocalRepository characterLocalRepository;
 
-  Future<Either<Exception, Character?>> call() async => characterLocalRepository.getCharacter();
+  Future<Either<Exception, Character?>> call(int page) async => characterLocalRepository.getCharacter(page);
 }

@@ -60,6 +60,36 @@ class AppLocalizations {
     return Intl.message('Ricky and Morty', name: 'appName', desc: '', args: []);
   }
 
+  /// `Settings`
+  String get lblSettings {
+    return Intl.message('Settings', name: 'lblSettings', desc: '', args: []);
+  }
+
+  /// `Favorites`
+  String get lblFavorites {
+    return Intl.message('Favorites', name: 'lblFavorites', desc: '', args: []);
+  }
+
+  /// `There is no data at the moment`
+  String get lblNoDataAvailable {
+    return Intl.message(
+      'There is no data at the moment',
+      name: 'lblNoDataAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no favorites yet`
+  String get lblEmptyFavorites {
+    return Intl.message(
+      'There are no favorites yet',
+      name: 'lblEmptyFavorites',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Response is null`
   String get nullResponseMessage {
     return Intl.message(

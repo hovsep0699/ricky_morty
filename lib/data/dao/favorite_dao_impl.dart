@@ -11,12 +11,15 @@ class FavoriteDaoImpl implements FavoriteDao {
   }
 
   @override
-  Future<FavoriteBox?> getFavoriteById(int id) async =>  HiveManager.favoriteBox.get(id);
+  Future<FavoriteBox?> getFavoriteById(int id) async {
+    if (HiveManager.favoriteBox.isEmpty) {
+      return null;
+    }
+    return HiveManager.favoriteBox.get(id);
+  }
+    @override
+    Future<List<FavoriteBox>> getAllFavorites() async => HiveManager.favoriteBox.values.toList();
 
-
-  @override
-  Future<List<FavoriteBox>> getAllFavorites() async => HiveManager.favoriteBox.values.toList();
-
-  @override
-  Future<void> deleteFavorite(int id) async => HiveManager.favoriteBox.delete(id);
-}
+    @override
+    Future<void> deleteFavorite(int id) async => HiveManager.favoriteBox.delete(id);
+  }

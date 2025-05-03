@@ -35,6 +35,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidRequestErrorMessage": MessageLookupByLibrary.simpleMessage(
       "Invalid Request",
     ),
+    "lblEmptyFavorites": MessageLookupByLibrary.simpleMessage(
+      "There are no favorites yet",
+    ),
+    "lblFavorites": MessageLookupByLibrary.simpleMessage("Favorites"),
+    "lblNoDataAvailable": MessageLookupByLibrary.simpleMessage(
+      "There is no data at the moment",
+    ),
+    "lblSettings": MessageLookupByLibrary.simpleMessage("Settings"),
     "nullResponseMessage": MessageLookupByLibrary.simpleMessage(
       "Response is null",
     ),

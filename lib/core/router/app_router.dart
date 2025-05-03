@@ -1,10 +1,9 @@
-
 import 'package:auto_route/auto_route.dart';
 
 import '../../presentation/features/favorites/view/favorites_screen.dart';
 import '../../presentation/features/home/view/home_screen.dart';
 import '../../presentation/features/navigation/view/navigation_screen.dart';
-
+import 'routes.dart';
 
 part 'app_router.gr.dart';
 
@@ -13,11 +12,11 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
     AutoRoute(
-      path: '/',
+      path: Routes.root,
       page: NavigationRoute.page,
       children: [
-        AutoRoute(initial: true, path: 'home', page: HomeRoute.page, maintainState: false),
-        AutoRoute(path: 'favorites', page: FavoritesRoute.page, maintainState: false),
+        AutoRoute(initial: true, path: Routes.home, page: HomeRoute.page, maintainState: false),
+        AutoRoute(path: Routes.favorites, page: FavoritesRoute.page, maintainState: false),
       ],
     ),
   ];

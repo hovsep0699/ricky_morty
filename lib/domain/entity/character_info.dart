@@ -5,7 +5,7 @@ class CharacterInfo with _$CharacterInfo {
   const factory CharacterInfo({
     required int count,
     required int pages,
-    required String next,
-    required String? prev,
+    String? next,
+    String? prev,
   }) = _CharacterInfo;
 }

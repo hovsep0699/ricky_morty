@@ -1203,7 +1203,7 @@ class _$InitialImpl implements _Initial {
     this.charactersData,
     final List<CharacterDetails> cachedFavorites = const [],
     this.maxLength = 4,
-    this.currentPage = 0,
+    this.currentPage = 1,
     this.isLoadingMore = false,
     final List<CharacterDetails> paginatedCharacters = const [],
     this.errorMessage,

@@ -14,18 +14,20 @@ class CharacterLocalDataSourceImpl implements CharacterLocalDataSource {
   final _mapper = CharacterHiveMapper();
 
   @override
-  Future<Either<Exception, Character>> getCharacter() async {
-    return RequestManager.requestLocal<Character, CharacterBox>(
-      onRequest: () => characterDAO.getCharacter(),
-      onConvert: (response) => _mapper.convert<CharacterBox, Character>(response),
+  Future<Either<Exception, Character?>> getCharacter(int page) async {
+    return RequestManager.requestLocal<Character?, CharacterBox>(
+      onRequest: () => characterDAO.getCharacter(page),
+      onConvert:
+          (response) =>
+              response == null ? null : _mapper.convert<CharacterBox, Character>(response),
     );
   }
 
   @override
-  Future<Either<Exception, void>> storeCharacter(Character character) async {
+  Future<Either<Exception, void>> storeCharacter(Character character, int page) async {
     return RequestManager.requestLocal<void, void>(
       onRequest:
-          () => characterDAO.storeCharacter(_mapper.convert<Character, CharacterBox>(character)),
+          () => characterDAO.storeCharacter(_mapper.convert<Character, CharacterBox>(character), page),
       onConvert: (response) => response,
     );
   }

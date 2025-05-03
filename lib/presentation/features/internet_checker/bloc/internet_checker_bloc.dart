@@ -28,9 +28,11 @@ class InternetCheckerCubit extends Cubit<InternetCheckerState> {
           ? InternetCheckerStatus.online
           : InternetCheckerStatus.offline;
 
-      Future.microtask(() {
-        emit(state.copyWith(status: status, oldStatus: oldStatus));
-      });
+      if (oldStatus != status) {
+        Future.microtask(() {
+          emit(state.copyWith(status: status, oldStatus: oldStatus));
+        });
+      }
     });
   }
 }

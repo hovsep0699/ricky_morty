@@ -17,7 +17,7 @@ class CharacterInfoBox extends HiveObject {
   int pages;
 
   @HiveField(2)
-  String next;
+  String? next;
 
   @HiveField(3)
   String? prev;

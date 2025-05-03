@@ -6,13 +6,22 @@ class CharacterDaoImpl implements CharacterDAO {
   CharacterDaoImpl();
 
   @override
-  Future<void> storeCharacter(CharacterBox character) async {
-    await HiveManager.characterBox.clear();
-    await HiveManager.characterBox.add(character);
+  Future<void> storeCharacter(CharacterBox character, int page) async {
+    final box = await getCharacter(page);
+    if (box != null) {
+      return ;
+    }
+    await HiveManager.characterBox.put(page, character);
   }
 
   @override
-  Future<CharacterBox?> getCharacter() async {
-    return HiveManager.characterBox.getAt(0);
+  Future<CharacterBox?> getCharacter(int page) async {
+    if (HiveManager.characterBox.isEmpty) {
+      return null;
+    }
+    if (!HiveManager.characterBox.containsKey(page)) {
+      return null;
+    }
+    return HiveManager.characterBox.get(page);
   }
 }

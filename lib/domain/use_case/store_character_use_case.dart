@@ -8,5 +8,5 @@ class StoreCharacterUseCase {
 
   final CharacterLocalRepository characterLocalRepository;
 
-  Future<Either<Exception, void>> call(Character character) async => characterLocalRepository.storeCharacter(character);
+  Future<Either<Exception, void>> call(Character character, int page) async => characterLocalRepository.storeCharacter(character, page);
 }
