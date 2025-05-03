@@ -61,7 +61,7 @@ _$CharacterInfoDtoImpl _$$CharacterInfoDtoImplFromJson(
 ) => _$CharacterInfoDtoImpl(
   count: (json['count'] as num).toInt(),
   pages: (json['pages'] as num).toInt(),
-  next: json['next'] as String,
+  next: json['next'] as String?,
   prev: json['prev'] as String?,
 );
 

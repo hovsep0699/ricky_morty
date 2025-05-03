@@ -4,5 +4,5 @@ import '../../../domain/entity/character.dart';
 
 
 abstract interface class CharacterRemoteDataSource {
-  Future<Either<Exception, Character>> getCharacters(int page);
+  Future<Either<Exception, Character?>> getCharacters(int page);
 }

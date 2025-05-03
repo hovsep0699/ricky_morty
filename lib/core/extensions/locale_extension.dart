@@ -1,6 +1,8 @@
 
 import 'dart:ui';
 
+import 'package:auto_mappr_annotation/auto_mappr_annotation.dart';
+
 
 abstract class LocaleMappings {
   static Map<String, String> get localeDisplayNames => {
@@ -16,6 +18,8 @@ abstract class LocaleMappings {
     'hi': 'Hindi',
   };
 }
+
+
 
 extension LocaleExtension on Locale {
   String toValue() {

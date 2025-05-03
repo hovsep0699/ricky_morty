@@ -1,5 +1,9 @@
 {
   "appName": "Рик и Морти",
+  "lblSettings": "Настройки",
+  "lblFavorites": "Избранное",
+  "lblNoDataAvailable": "На данный момент данных нет",
+  "lblEmptyFavorites": "Пока нет избранных",
   "nullResponseMessage": "Ответ отсутствует",
   "validationErrorMessage": "Ошибка валидации",
   "permissionErrorMessage": "Доступ запрещён",

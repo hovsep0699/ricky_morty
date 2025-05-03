@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/gaps.dart';
 import '../../../core/extensions/locale_extension.dart';
 import '../../../core/extensions/number_extension.dart';
+import '../../../core/themes/app_text_styles.dart';
 
 class SimpleDropDownButton<T> extends StatelessWidget {
   const SimpleDropDownButton({
@@ -44,7 +45,7 @@ class SimpleDropDownButton<T> extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surface,
-              borderRadius: 4.0.radiusAll,
+              borderRadius: Gaps.small.radiusAll,
             ),
             offset: offset ??
                 (width == null
@@ -58,16 +59,16 @@ class SimpleDropDownButton<T> extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  e.toString().toUpperCase(),
+                  e.toString(),
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
+                    color: ColorScheme.of(context).tertiary,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 Icon(
                   Icons.keyboard_arrow_down_outlined,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: ColorScheme.of(context).tertiary,
                   size: 20,
                 ),
               ],
@@ -82,8 +83,8 @@ class SimpleDropDownButton<T> extends StatelessWidget {
                 T == Locale ? (e as Locale).toValue() : e.toString(),
                 style: TextStyle(
                     color: e == selectedItem
-                        ? Theme.of(context).colorScheme.primary
-                        : Theme.of(context).colorScheme.onSurface),
+                        ? ColorScheme.of(context).primary
+                        : ColorScheme.of(context).onSurface),
               )))
               .toList()),
     );

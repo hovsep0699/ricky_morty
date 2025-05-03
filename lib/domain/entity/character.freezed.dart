@@ -637,7 +637,7 @@ abstract class _CharacterDetails implements CharacterDetails {
 mixin _$CharacterInfo {
   int get count => throw _privateConstructorUsedError;
   int get pages => throw _privateConstructorUsedError;
-  String get next => throw _privateConstructorUsedError;
+  String? get next => throw _privateConstructorUsedError;
   String? get prev => throw _privateConstructorUsedError;
 
   /// Create a copy of CharacterInfo
@@ -654,7 +654,7 @@ abstract class $CharacterInfoCopyWith<$Res> {
     $Res Function(CharacterInfo) then,
   ) = _$CharacterInfoCopyWithImpl<$Res, CharacterInfo>;
   @useResult
-  $Res call({int count, int pages, String next, String? prev});
+  $Res call({int count, int pages, String? next, String? prev});
 }
 
 /// @nodoc
@@ -674,7 +674,7 @@ class _$CharacterInfoCopyWithImpl<$Res, $Val extends CharacterInfo>
   $Res call({
     Object? count = null,
     Object? pages = null,
-    Object? next = null,
+    Object? next = freezed,
     Object? prev = freezed,
   }) {
     return _then(
@@ -690,10 +690,10 @@ class _$CharacterInfoCopyWithImpl<$Res, $Val extends CharacterInfo>
                     : pages // ignore: cast_nullable_to_non_nullable
                         as int,
             next:
-                null == next
+                freezed == next
                     ? _value.next
                     : next // ignore: cast_nullable_to_non_nullable
-                        as String,
+                        as String?,
             prev:
                 freezed == prev
                     ? _value.prev
@@ -714,7 +714,7 @@ abstract class _$$CharacterInfoImplCopyWith<$Res>
   ) = __$$CharacterInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int count, int pages, String next, String? prev});
+  $Res call({int count, int pages, String? next, String? prev});
 }
 
 /// @nodoc
@@ -733,7 +733,7 @@ class __$$CharacterInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? count = null,
     Object? pages = null,
-    Object? next = null,
+    Object? next = freezed,
     Object? prev = freezed,
   }) {
     return _then(
@@ -749,10 +749,10 @@ class __$$CharacterInfoImplCopyWithImpl<$Res>
                 : pages // ignore: cast_nullable_to_non_nullable
                     as int,
         next:
-            null == next
+            freezed == next
                 ? _value.next
                 : next // ignore: cast_nullable_to_non_nullable
-                    as String,
+                    as String?,
         prev:
             freezed == prev
                 ? _value.prev
@@ -769,8 +769,8 @@ class _$CharacterInfoImpl implements _CharacterInfo {
   const _$CharacterInfoImpl({
     required this.count,
     required this.pages,
-    required this.next,
-    required this.prev,
+    this.next,
+    this.prev,
   });
 
   @override
@@ -778,7 +778,7 @@ class _$CharacterInfoImpl implements _CharacterInfo {
   @override
   final int pages;
   @override
-  final String next;
+  final String? next;
   @override
   final String? prev;
 
@@ -814,8 +814,8 @@ abstract class _CharacterInfo implements CharacterInfo {
   const factory _CharacterInfo({
     required final int count,
     required final int pages,
-    required final String next,
-    required final String? prev,
+    final String? next,
+    final String? prev,
   }) = _$CharacterInfoImpl;
 
   @override
@@ -823,7 +823,7 @@ abstract class _CharacterInfo implements CharacterInfo {
   @override
   int get pages;
   @override
-  String get next;
+  String? get next;
   @override
   String? get prev;
 

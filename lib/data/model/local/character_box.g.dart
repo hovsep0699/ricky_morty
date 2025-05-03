@@ -56,7 +56,7 @@ class CharacterInfoBoxAdapter extends TypeAdapter<CharacterInfoBox> {
     return CharacterInfoBox(
       count: fields[0] as int,
       pages: fields[1] as int,
-      next: fields[2] as String,
+      next: fields[2] as String?,
       prev: fields[3] as String?,
     );
   }
