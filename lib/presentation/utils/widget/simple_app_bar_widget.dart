@@ -38,42 +38,13 @@ class SimpleAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
 
   @override
   Widget build(BuildContext context) {
-    final localeNotifier = Provider.of<LocaleNotifier>(context);
-    // print("AAAA::: ${localeNotifier.locale}");
-    final themeNotifier = Provider.of<ThemeNotifier>(context);
     return AppBar(
         systemOverlayStyle: SystemUiOverlayStyle.light,
         surfaceTintColor: ColorScheme.of(context).onPrimary,
         centerTitle: true,
         actionsPadding: Gaps.medium.paddingHorizontal,
         actions: actions ??
-            [
-              // Expanded(
-              //   flex: 2,
-              //   child: SimpleDropDownButton<String>(
-              //     icon: Icon(Icons.menu_book, color: ColorScheme.of(context).primary),
-              //     items: LocaleMappings.localeDisplayNames.values.toList(),
-              //     onChanged: (String? value) {
-              //       final loc = LocaleMappings.localeDisplayNames.where<String, String>((key, locale) => value == locale);
-              //       localeNotifier.setLocale(Locale(loc.keys.firstOrNull ?? PreferenceValues.localeEn));
-              //     },
-              //   ),
-              // ),
-              // // Gaps.extraLarge.spaceHorizontal,
-              //
-              // // Gaps.large.spaceHorizontal,
-              // Expanded(
-              //   flex: 2,
-              //   child: SimpleDropDownButton<String>(
-              //     icon: Assets.icons.language.svg(colorFilter: ColorFilter.mode(ColorScheme.of(context).primary, BlendMode.srcIn)),
-              //     items: ThemeMode.values.stringValues,
-              //     onChanged: (String? value) {
-              //       themeNotifier.setTheme(ThemeMode.values.fromString(value ?? PreferenceValues.lightTheme));
-              //     },
-              //   ),
-              // ),
-              // Gaps.large.spaceHorizontal,
-            ],
+            [],
         title: title,
         leading: showBackButton
             ? const AutoLeadingButton()
@@ -84,7 +55,7 @@ class SimpleAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
                       ? leadingIcon!
                       : Assets.icons.menu.svg(
                           colorFilter:
-                              ColorFilter.mode(ColorScheme.of(context).primary, BlendMode.srcIn)),
+                              ColorFilter.mode(ColorScheme.of(context).tertiary, BlendMode.srcIn)),
                 ),
               ));
   }

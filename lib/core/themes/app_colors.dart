@@ -27,12 +27,12 @@ const ColorScheme darkColorScheme = ColorScheme(
   onPrimary: Color(0xFFFFFFFF),
   secondary: Color(0xFFEEEEEE),
   onSecondary: Color(0xFF000000),
-  tertiary: Color(0xFF000000),
-  onTertiary: Color(0xFFFFFFFF),
+  tertiary: Color(0xFFFFFFFF),
+  onTertiary: Color(0xFF000000),
   error: Color(0xFFB43A20),
   onError: Color(0xFFFFFFFF),
   surface: Color(0xFF000000),
-  onSurface: Color(0xFF000000),
+  onSurface: Color(0xFFFFFFFF),
   brightness: Brightness.dark,
 );
 

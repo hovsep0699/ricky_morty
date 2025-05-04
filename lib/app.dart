@@ -9,7 +9,6 @@ import 'core/notifiers/theme_notifier.dart';
 import 'core/router/app_router.dart';
 import 'core/themes/app_themes.dart';
 import 'data/utils/hive_manager.dart';
-import 'di/service_locator.dart';
 import 'resources/l10n/l10n.dart';
 
 class App extends StatefulWidget {
@@ -20,7 +19,6 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
-
   @override
   void dispose() {
     closeBoxes();
@@ -35,8 +33,12 @@ class AppState extends State<App> {
       child: Builder(
         builder:
             (context) => AppContent(
-              initialLanguage: context.watch<LocaleNotifier>().locale,
-              initialThemeMode: context.watch<ThemeNotifier>().themeMode,
+              initialLanguage: context.select<LocaleNotifier, Locale>(
+                (LocaleNotifier notifier) => notifier.locale,
+              ),
+              initialThemeMode: context.select<ThemeNotifier, ThemeMode>(
+                (ThemeNotifier notifier) => notifier.themeMode,
+              ),
             ),
       ),
     );

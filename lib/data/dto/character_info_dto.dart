@@ -5,7 +5,7 @@ class CharacterInfoDto with _$CharacterInfoDto {
   const factory CharacterInfoDto({
     required int count,
     required int pages,
-    required String next,
+    required String? next,
     String? prev,
   }) = _CharacterInfoDto;
 

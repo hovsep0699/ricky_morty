@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../core/router/app_router.dart';
 import '../../../utils/widget/bottom_natigation_bar_widget.dart';
+import '../../../utils/widget/simple_drawer_widget.dart';
 
 @RoutePage()
 class NavigationScreen extends StatefulWidget {
@@ -20,6 +21,7 @@ class NavigationScreenState extends State<NavigationScreen> {
         HomeRoute(),
         FavoritesRoute(),
       ],
+      drawer: const SimpleDrawerWidget(),
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBarWidget(
           currentIndex: tabsRouter.activeIndex,

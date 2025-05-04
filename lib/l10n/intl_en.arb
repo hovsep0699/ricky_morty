@@ -1,5 +1,9 @@
 {
   "appName": "Ricky and Morty",
+  "lblSettings": "Settings",
+  "lblFavorites": "Favorites",
+  "lblNoDataAvailable": "There is no data at the moment",
+  "lblEmptyFavorites": "There are no favorites yet",
   "nullResponseMessage": "Response is null",
   "validationErrorMessage": "Validation error",
   "permissionErrorMessage": "Permission denied",

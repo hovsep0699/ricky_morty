@@ -1,10 +1,12 @@
 import 'package:hive/hive.dart';
 
-part 'character_details_box.g.dart';
-part 'character_location_box.dart';
-part 'character_origin_box.dart';
+import '../../utils/hive_types.dart';
+import 'character_location_box.dart';
+import 'character_origin_box.dart';
 
-@HiveType(typeId: 4)
+part 'character_details_box_adapter.dart';
+part 'character_origin_box_adapter.dart';
+
 class CharacterDetailsBox extends HiveObject {
 
   CharacterDetailsBox({
@@ -21,39 +23,28 @@ class CharacterDetailsBox extends HiveObject {
     required this.url,
     required this.created,
   });
-  @HiveField(0)
+
   int id;
 
-  @HiveField(1)
   String name;
 
-  @HiveField(2)
   String status;
 
-  @HiveField(3)
   String species;
 
-  @HiveField(4)
   String type;
 
-  @HiveField(5)
   String gender;
 
-  @HiveField(6)
   CharacterOriginBox origin;
 
-  @HiveField(7)
   CharacterLocationBox location;
 
-  @HiveField(8)
   String image;
 
-  @HiveField(9)
   List<String> episode;
 
-  @HiveField(10)
   String url;
 
-  @HiveField(11)
   String created;
 }

@@ -8,8 +8,9 @@ class HomeState with _$HomeState {
     Character? charactersData,
     @Default([]) List<CharacterDetails> cachedFavorites,
     @Default(4) int maxLength,
-    @Default(0) int currentPage,
+    @Default(1) int currentPage,
     @Default(false) bool isLoadingMore,
+    @Default(SortOption.status) SortOption selectedSortOption,
     @Default([]) List<CharacterDetails> paginatedCharacters,
     String? errorMessage,
   }) = _Initial;

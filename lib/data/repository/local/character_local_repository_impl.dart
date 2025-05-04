@@ -10,10 +10,10 @@ class CharacterLocalRepositoryImpl implements CharacterLocalRepository {
   final CharacterLocalDataSource characterLocalDataSource;
 
   @override
-  Future<Either<Exception, void>> storeCharacter(Character character) =>
-      characterLocalDataSource.storeCharacter(character);
+  Future<Either<Exception, void>> storeCharacter(Character character, int page) =>
+      characterLocalDataSource.storeCharacter(character, page);
 
   @override
-  Future<Either<Exception, Character?>> getCharacter() =>
-      characterLocalDataSource.getCharacter();
+  Future<Either<Exception, Character?>> getCharacter(int page) =>
+      characterLocalDataSource.getCharacter(page);
 }

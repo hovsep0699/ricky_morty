@@ -42,6 +42,8 @@ dependencies:
   freezed: ^2.5.8
 
 
+
+
 # uncomment for hive generator
 #dependency_overrides:
 #  source_gen: ^2.0.0

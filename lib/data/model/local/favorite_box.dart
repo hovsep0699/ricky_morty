@@ -1,9 +1,11 @@
 import 'package:hive/hive.dart';
 
+import '../../utils/hive_types.dart';
 import 'character_details_box.dart';
-part 'favorite_box.g.dart';
+import 'character_location_box.dart';
+import 'character_origin_box.dart';
+part 'favorite_box_adapter.dart';
 
-@HiveType(typeId: 3)
 class FavoriteBox extends HiveObject {
   FavoriteBox({
     required this.id,
@@ -19,39 +21,27 @@ class FavoriteBox extends HiveObject {
     required this.url,
     required this.created,
   });
-  @HiveField(0)
   int id;
 
-  @HiveField(1)
   String name;
 
-  @HiveField(2)
   String status;
 
-  @HiveField(3)
   String species;
 
-  @HiveField(4)
   String type;
 
-  @HiveField(5)
   String gender;
 
-  @HiveField(6)
   CharacterOriginBox origin;
 
-  @HiveField(7)
   CharacterLocationBox location;
 
-  @HiveField(8)
   String image;
 
-  @HiveField(9)
   List<String> episode;
 
-  @HiveField(10)
   String url;
 
-  @HiveField(11)
   String created;
 }

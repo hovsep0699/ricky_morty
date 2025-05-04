@@ -681,7 +681,7 @@ CharacterInfoDto _$CharacterInfoDtoFromJson(Map<String, dynamic> json) {
 mixin _$CharacterInfoDto {
   int get count => throw _privateConstructorUsedError;
   int get pages => throw _privateConstructorUsedError;
-  String get next => throw _privateConstructorUsedError;
+  String? get next => throw _privateConstructorUsedError;
   String? get prev => throw _privateConstructorUsedError;
 
   /// Serializes this CharacterInfoDto to a JSON map.
@@ -701,7 +701,7 @@ abstract class $CharacterInfoDtoCopyWith<$Res> {
     $Res Function(CharacterInfoDto) then,
   ) = _$CharacterInfoDtoCopyWithImpl<$Res, CharacterInfoDto>;
   @useResult
-  $Res call({int count, int pages, String next, String? prev});
+  $Res call({int count, int pages, String? next, String? prev});
 }
 
 /// @nodoc
@@ -721,7 +721,7 @@ class _$CharacterInfoDtoCopyWithImpl<$Res, $Val extends CharacterInfoDto>
   $Res call({
     Object? count = null,
     Object? pages = null,
-    Object? next = null,
+    Object? next = freezed,
     Object? prev = freezed,
   }) {
     return _then(
@@ -737,10 +737,10 @@ class _$CharacterInfoDtoCopyWithImpl<$Res, $Val extends CharacterInfoDto>
                     : pages // ignore: cast_nullable_to_non_nullable
                         as int,
             next:
-                null == next
+                freezed == next
                     ? _value.next
                     : next // ignore: cast_nullable_to_non_nullable
-                        as String,
+                        as String?,
             prev:
                 freezed == prev
                     ? _value.prev
@@ -761,7 +761,7 @@ abstract class _$$CharacterInfoDtoImplCopyWith<$Res>
   ) = __$$CharacterInfoDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int count, int pages, String next, String? prev});
+  $Res call({int count, int pages, String? next, String? prev});
 }
 
 /// @nodoc
@@ -780,7 +780,7 @@ class __$$CharacterInfoDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? count = null,
     Object? pages = null,
-    Object? next = null,
+    Object? next = freezed,
     Object? prev = freezed,
   }) {
     return _then(
@@ -796,10 +796,10 @@ class __$$CharacterInfoDtoImplCopyWithImpl<$Res>
                 : pages // ignore: cast_nullable_to_non_nullable
                     as int,
         next:
-            null == next
+            freezed == next
                 ? _value.next
                 : next // ignore: cast_nullable_to_non_nullable
-                    as String,
+                    as String?,
         prev:
             freezed == prev
                 ? _value.prev
@@ -828,7 +828,7 @@ class _$CharacterInfoDtoImpl implements _CharacterInfoDto {
   @override
   final int pages;
   @override
-  final String next;
+  final String? next;
   @override
   final String? prev;
 
@@ -873,7 +873,7 @@ abstract class _CharacterInfoDto implements CharacterInfoDto {
   const factory _CharacterInfoDto({
     required final int count,
     required final int pages,
-    required final String next,
+    required final String? next,
     final String? prev,
   }) = _$CharacterInfoDtoImpl;
 
@@ -885,7 +885,7 @@ abstract class _CharacterInfoDto implements CharacterInfoDto {
   @override
   int get pages;
   @override
-  String get next;
+  String? get next;
   @override
   String? get prev;
 

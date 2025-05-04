@@ -1,27 +1,30 @@
 import '../../l10n/localizations_utils.dart';
 
+
 class GeneralException implements Exception {
   GeneralException({this.message = ''});
 
-  final String message;
+  final String? message;
 
   @override
   String toString() {
-    return message;
+    return 'message: $message';
   }
 }
 
 class ApiException implements GeneralException {
-  ApiException({this.statusCode = 500, this.message = ''});
+  ApiException({this.statusCode = 500, this.message = '', this.error});
 
   @override
   final String message;
 
   final int statusCode;
 
+  final Object? error;
+
   @override
   String toString() {
-    return 'status: $statusCode, message: $message';
+    return 'status: $statusCode, message: $message, error: $error';
   }
 }
 
