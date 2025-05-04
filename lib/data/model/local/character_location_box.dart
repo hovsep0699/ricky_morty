@@ -1,13 +1,14 @@
-part of 'character_details_box.dart';
+import 'package:hive/hive.dart';
 
-@HiveType(typeId: 2)
+import '../../utils/hive_types.dart';
+
+part 'character_location_box_adapter.dart';
+
 class CharacterLocationBox extends HiveObject {
 
   CharacterLocationBox({required this.name, required this.url});
 
-  @HiveField(0)
   final String name;
 
-  @HiveField(1)
   final String url;
 }

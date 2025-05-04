@@ -13,6 +13,8 @@ import 'package:auto_mappr_annotation/auto_mappr_annotation.dart' as _i1;
 import '../../domain/entity/character.dart' as _i2;
 import '../model/local/character_box.dart' as _i3;
 import '../model/local/character_details_box.dart' as _i4;
+import '../model/local/character_location_box.dart' as _i6;
+import '../model/local/character_origin_box.dart' as _i7;
 import '../model/local/favorite_box.dart' as _i5;
 
 /// {@template package:ricky_morty/data/mapper/character_hive_mapper.dart}
@@ -93,24 +95,24 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
     }
     if ((sourceTypeOf == _typeOf<_i2.CharacterLocation>() ||
             sourceTypeOf == _typeOf<_i2.CharacterLocation?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterLocationBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterLocationBox?>())) {
+        (targetTypeOf == _typeOf<_i6.CharacterLocationBox>() ||
+            targetTypeOf == _typeOf<_i6.CharacterLocationBox?>())) {
       return true;
     }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterLocationBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterLocationBox?>()) &&
+    if ((sourceTypeOf == _typeOf<_i6.CharacterLocationBox>() ||
+            sourceTypeOf == _typeOf<_i6.CharacterLocationBox?>()) &&
         (targetTypeOf == _typeOf<_i2.CharacterLocation>() ||
             targetTypeOf == _typeOf<_i2.CharacterLocation?>())) {
       return true;
     }
     if ((sourceTypeOf == _typeOf<_i2.CharacterOrigin>() ||
             sourceTypeOf == _typeOf<_i2.CharacterOrigin?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterOriginBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterOriginBox?>())) {
+        (targetTypeOf == _typeOf<_i7.CharacterOriginBox>() ||
+            targetTypeOf == _typeOf<_i7.CharacterOriginBox?>())) {
       return true;
     }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterOriginBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterOriginBox?>()) &&
+    if ((sourceTypeOf == _typeOf<_i7.CharacterOriginBox>() ||
+            sourceTypeOf == _typeOf<_i7.CharacterOriginBox?>()) &&
         (targetTypeOf == _typeOf<_i2.CharacterOrigin>() ||
             targetTypeOf == _typeOf<_i2.CharacterOrigin?>())) {
       return true;
@@ -388,49 +390,49 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
     }
     if ((sourceTypeOf == _typeOf<_i2.CharacterLocation>() ||
             sourceTypeOf == _typeOf<_i2.CharacterLocation?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterLocationBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterLocationBox?>())) {
+        (targetTypeOf == _typeOf<_i6.CharacterLocationBox>() ||
+            targetTypeOf == _typeOf<_i6.CharacterLocationBox?>())) {
       if (canReturnNull && model == null) {
         return null;
       }
-      return (_map__i2$CharacterLocation_To__i4$CharacterLocationBox(
+      return (_map__i2$CharacterLocation_To__i6$CharacterLocationBox(
             (model as _i2.CharacterLocation?),
           )
           as TARGET);
     }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterLocationBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterLocationBox?>()) &&
+    if ((sourceTypeOf == _typeOf<_i6.CharacterLocationBox>() ||
+            sourceTypeOf == _typeOf<_i6.CharacterLocationBox?>()) &&
         (targetTypeOf == _typeOf<_i2.CharacterLocation>() ||
             targetTypeOf == _typeOf<_i2.CharacterLocation?>())) {
       if (canReturnNull && model == null) {
         return null;
       }
-      return (_map__i4$CharacterLocationBox_To__i2$CharacterLocation(
-            (model as _i4.CharacterLocationBox?),
+      return (_map__i6$CharacterLocationBox_To__i2$CharacterLocation(
+            (model as _i6.CharacterLocationBox?),
           )
           as TARGET);
     }
     if ((sourceTypeOf == _typeOf<_i2.CharacterOrigin>() ||
             sourceTypeOf == _typeOf<_i2.CharacterOrigin?>()) &&
-        (targetTypeOf == _typeOf<_i4.CharacterOriginBox>() ||
-            targetTypeOf == _typeOf<_i4.CharacterOriginBox?>())) {
+        (targetTypeOf == _typeOf<_i7.CharacterOriginBox>() ||
+            targetTypeOf == _typeOf<_i7.CharacterOriginBox?>())) {
       if (canReturnNull && model == null) {
         return null;
       }
-      return (_map__i2$CharacterOrigin_To__i4$CharacterOriginBox(
+      return (_map__i2$CharacterOrigin_To__i7$CharacterOriginBox(
             (model as _i2.CharacterOrigin?),
           )
           as TARGET);
     }
-    if ((sourceTypeOf == _typeOf<_i4.CharacterOriginBox>() ||
-            sourceTypeOf == _typeOf<_i4.CharacterOriginBox?>()) &&
+    if ((sourceTypeOf == _typeOf<_i7.CharacterOriginBox>() ||
+            sourceTypeOf == _typeOf<_i7.CharacterOriginBox?>()) &&
         (targetTypeOf == _typeOf<_i2.CharacterOrigin>() ||
             targetTypeOf == _typeOf<_i2.CharacterOrigin?>())) {
       if (canReturnNull && model == null) {
         return null;
       }
-      return (_map__i4$CharacterOriginBox_To__i2$CharacterOrigin(
-            (model as _i4.CharacterOriginBox?),
+      return (_map__i7$CharacterOriginBox_To__i2$CharacterOrigin(
+            (model as _i7.CharacterOriginBox?),
           )
           as TARGET);
     }
@@ -557,8 +559,8 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
       species: model.species,
       type: model.type,
       gender: model.gender,
-      origin: _map__i2$CharacterOrigin_To__i4$CharacterOriginBox(model.origin),
-      location: _map__i2$CharacterLocation_To__i4$CharacterLocationBox(
+      origin: _map__i2$CharacterOrigin_To__i7$CharacterOriginBox(model.origin),
+      location: _map__i2$CharacterLocation_To__i6$CharacterLocationBox(
         model.location,
       ),
       image: model.image,
@@ -585,8 +587,8 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
       species: model.species,
       type: model.type,
       gender: model.gender,
-      origin: _map__i4$CharacterOriginBox_To__i2$CharacterOrigin(model.origin),
-      location: _map__i4$CharacterLocationBox_To__i2$CharacterLocation(
+      origin: _map__i7$CharacterOriginBox_To__i2$CharacterOrigin(model.origin),
+      location: _map__i6$CharacterLocationBox_To__i2$CharacterLocation(
         model.location,
       ),
       image: model.image,
@@ -613,8 +615,8 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
       species: model.species,
       type: model.type,
       gender: model.gender,
-      origin: _map__i2$CharacterOrigin_To__i4$CharacterOriginBox(model.origin),
-      location: _map__i2$CharacterLocation_To__i4$CharacterLocationBox(
+      origin: _map__i2$CharacterOrigin_To__i7$CharacterOriginBox(model.origin),
+      location: _map__i2$CharacterLocation_To__i6$CharacterLocationBox(
         model.location,
       ),
       image: model.image,
@@ -641,8 +643,8 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
       species: model.species,
       type: model.type,
       gender: model.gender,
-      origin: _map__i4$CharacterOriginBox_To__i2$CharacterOrigin(model.origin),
-      location: _map__i4$CharacterLocationBox_To__i2$CharacterLocation(
+      origin: _map__i7$CharacterOriginBox_To__i2$CharacterOrigin(model.origin),
+      location: _map__i6$CharacterLocationBox_To__i2$CharacterLocation(
         model.location,
       ),
       image: model.image,
@@ -652,8 +654,8 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
     );
   }
 
-  _i4.CharacterLocationBox
-  _map__i2$CharacterLocation_To__i4$CharacterLocationBox(
+  _i6.CharacterLocationBox
+  _map__i2$CharacterLocation_To__i6$CharacterLocationBox(
     _i2.CharacterLocation? input,
   ) {
     final model = input;
@@ -663,11 +665,11 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
         r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterLocation, CharacterLocationBox> to handle null values during mapping.',
       );
     }
-    return _i4.CharacterLocationBox(name: model.name, url: model.url);
+    return _i6.CharacterLocationBox(name: model.name, url: model.url);
   }
 
-  _i2.CharacterLocation _map__i4$CharacterLocationBox_To__i2$CharacterLocation(
-    _i4.CharacterLocationBox? input,
+  _i2.CharacterLocation _map__i6$CharacterLocationBox_To__i2$CharacterLocation(
+    _i6.CharacterLocationBox? input,
   ) {
     final model = input;
     if (model == null) {
@@ -679,7 +681,7 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
     return _i2.CharacterLocation(name: model.name, url: model.url);
   }
 
-  _i4.CharacterOriginBox _map__i2$CharacterOrigin_To__i4$CharacterOriginBox(
+  _i7.CharacterOriginBox _map__i2$CharacterOrigin_To__i7$CharacterOriginBox(
     _i2.CharacterOrigin? input,
   ) {
     final model = input;
@@ -689,11 +691,11 @@ class $CharacterHiveMapper implements _i1.AutoMapprInterface {
         r'Consider setting the whenSourceIsNull parameter on the MapType<CharacterOrigin, CharacterOriginBox> to handle null values during mapping.',
       );
     }
-    return _i4.CharacterOriginBox(name: model.name, url: model.url);
+    return _i7.CharacterOriginBox(name: model.name, url: model.url);
   }
 
-  _i2.CharacterOrigin _map__i4$CharacterOriginBox_To__i2$CharacterOrigin(
-    _i4.CharacterOriginBox? input,
+  _i2.CharacterOrigin _map__i7$CharacterOriginBox_To__i2$CharacterOrigin(
+    _i7.CharacterOriginBox? input,
   ) {
     final model = input;
     if (model == null) {

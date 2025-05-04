@@ -3,6 +3,8 @@ import 'package:auto_mappr_annotation/auto_mappr_annotation.dart';
 import '../../domain/entity/character.dart';
 import '../model/local/character_box.dart';
 import '../model/local/character_details_box.dart';
+import '../model/local/character_location_box.dart';
+import '../model/local/character_origin_box.dart';
 import '../model/local/favorite_box.dart';
 import 'character_hive_mapper.auto_mappr.dart';
 
