@@ -30,8 +30,9 @@ class CharacterDetailsWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: Gaps.medium.radiusAll),
       elevation: 4,
       margin: Gaps.medium.paddingVertical,
-      child: Padding(
-        padding: Gaps.medium.paddingAll + Gaps.larger.paddingVertical,
+      child: Stack(
+        children: [ Padding(
+      padding: Gaps.medium.paddingAll + Gaps.larger.paddingVertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -69,19 +70,24 @@ class CharacterDetailsWidget extends StatelessWidget {
             ),
 
             Gaps.medium.spaceVertical,
-            Text(detail.species, style: body1),
-            Text(detail.status, style: body1),
-            if (hasRemoveButton)
-              Align(
-                alignment: Alignment.bottomRight,
-                child: IconButton(
-                  onPressed: onRemove,
-                  icon: const Icon(Icons.delete, color: Colors.red),
-                ),
-              ),
+
+            Text("Species: ${detail.species}", style: body1),
+            Gaps.medium.spaceVertical,
+            Text("Status: ${detail.status}", style: body1),
+            Gaps.medium.spaceVertical,
+            Text("Gender: ${detail.gender}", style: body1),
           ],
         ),
       ),
-    );
+          if (hasRemoveButton)
+            Positioned(
+              bottom: 30,
+              right: 0,
+              child: IconButton(
+                onPressed: onRemove,
+                icon: const Icon(Icons.delete, color: Colors.red),
+              ),
+            ),
+    ]),);
   }
 }

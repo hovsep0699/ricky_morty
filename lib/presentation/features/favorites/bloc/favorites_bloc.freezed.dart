@@ -19,6 +19,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FavoritesState {
   FavoritesStatus get status => throw _privateConstructorUsedError;
   List<CharacterDetails> get favorites => throw _privateConstructorUsedError;
+  dynamic get selectedSortOption => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of FavoritesState
@@ -38,6 +39,7 @@ abstract class $FavoritesStateCopyWith<$Res> {
   $Res call({
     FavoritesStatus status,
     List<CharacterDetails> favorites,
+    dynamic selectedSortOption,
     String? errorMessage,
   });
 }
@@ -59,6 +61,7 @@ class _$FavoritesStateCopyWithImpl<$Res, $Val extends FavoritesState>
   $Res call({
     Object? status = null,
     Object? favorites = null,
+    Object? selectedSortOption = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(
@@ -73,6 +76,11 @@ class _$FavoritesStateCopyWithImpl<$Res, $Val extends FavoritesState>
                     ? _value.favorites
                     : favorites // ignore: cast_nullable_to_non_nullable
                         as List<CharacterDetails>,
+            selectedSortOption:
+                freezed == selectedSortOption
+                    ? _value.selectedSortOption
+                    : selectedSortOption // ignore: cast_nullable_to_non_nullable
+                        as dynamic,
             errorMessage:
                 freezed == errorMessage
                     ? _value.errorMessage
@@ -96,6 +104,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call({
     FavoritesStatus status,
     List<CharacterDetails> favorites,
+    dynamic selectedSortOption,
     String? errorMessage,
   });
 }
@@ -116,6 +125,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? favorites = null,
+    Object? selectedSortOption = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(
@@ -130,6 +140,10 @@ class __$$InitialImplCopyWithImpl<$Res>
                 ? _value._favorites
                 : favorites // ignore: cast_nullable_to_non_nullable
                     as List<CharacterDetails>,
+        selectedSortOption:
+            freezed == selectedSortOption
+                ? _value.selectedSortOption!
+                : selectedSortOption,
         errorMessage:
             freezed == errorMessage
                 ? _value.errorMessage
@@ -146,6 +160,7 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl({
     this.status = FavoritesStatus.initial,
     final List<CharacterDetails> favorites = const [],
+    this.selectedSortOption = SortOption.status,
     this.errorMessage,
   }) : _favorites = favorites;
 
@@ -162,11 +177,14 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  @JsonKey()
+  final dynamic selectedSortOption;
+  @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'FavoritesState(status: $status, favorites: $favorites, errorMessage: $errorMessage)';
+    return 'FavoritesState(status: $status, favorites: $favorites, selectedSortOption: $selectedSortOption, errorMessage: $errorMessage)';
   }
 
   @override
@@ -179,6 +197,10 @@ class _$InitialImpl implements _Initial {
               other._favorites,
               _favorites,
             ) &&
+            const DeepCollectionEquality().equals(
+              other.selectedSortOption,
+              selectedSortOption,
+            ) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -188,6 +210,7 @@ class _$InitialImpl implements _Initial {
     runtimeType,
     status,
     const DeepCollectionEquality().hash(_favorites),
+    const DeepCollectionEquality().hash(selectedSortOption),
     errorMessage,
   );
 
@@ -204,6 +227,7 @@ abstract class _Initial implements FavoritesState {
   const factory _Initial({
     final FavoritesStatus status,
     final List<CharacterDetails> favorites,
+    final dynamic selectedSortOption,
     final String? errorMessage,
   }) = _$InitialImpl;
 
@@ -211,6 +235,8 @@ abstract class _Initial implements FavoritesState {
   FavoritesStatus get status;
   @override
   List<CharacterDetails> get favorites;
+  @override
+  dynamic get selectedSortOption;
   @override
   String? get errorMessage;
 
@@ -229,18 +255,24 @@ mixin _$FavoritesEvent {
     required TResult Function() getFavorites,
     required TResult Function(CharacterDetails detail) storeFavorite,
     required TResult Function(int id) remoteFavorite,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getFavorites,
     TResult? Function(CharacterDetails detail)? storeFavorite,
     TResult? Function(int id)? remoteFavorite,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getFavorites,
     TResult Function(CharacterDetails detail)? storeFavorite,
     TResult Function(int id)? remoteFavorite,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -248,18 +280,24 @@ mixin _$FavoritesEvent {
     required TResult Function(_GetFavorites value) getFavorites,
     required TResult Function(_StoreFavorite value) storeFavorite,
     required TResult Function(_RemoteFavorite value) remoteFavorite,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetFavorites value)? getFavorites,
     TResult? Function(_StoreFavorite value)? storeFavorite,
     TResult? Function(_RemoteFavorite value)? remoteFavorite,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetFavorites value)? getFavorites,
     TResult Function(_StoreFavorite value)? storeFavorite,
     TResult Function(_RemoteFavorite value)? remoteFavorite,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -332,6 +370,8 @@ class _$GetFavoritesImpl implements _GetFavorites {
     required TResult Function() getFavorites,
     required TResult Function(CharacterDetails detail) storeFavorite,
     required TResult Function(int id) remoteFavorite,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) {
     return getFavorites();
   }
@@ -342,6 +382,8 @@ class _$GetFavoritesImpl implements _GetFavorites {
     TResult? Function()? getFavorites,
     TResult? Function(CharacterDetails detail)? storeFavorite,
     TResult? Function(int id)? remoteFavorite,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) {
     return getFavorites?.call();
   }
@@ -352,6 +394,8 @@ class _$GetFavoritesImpl implements _GetFavorites {
     TResult Function()? getFavorites,
     TResult Function(CharacterDetails detail)? storeFavorite,
     TResult Function(int id)? remoteFavorite,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) {
     if (getFavorites != null) {
@@ -366,6 +410,8 @@ class _$GetFavoritesImpl implements _GetFavorites {
     required TResult Function(_GetFavorites value) getFavorites,
     required TResult Function(_StoreFavorite value) storeFavorite,
     required TResult Function(_RemoteFavorite value) remoteFavorite,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) {
     return getFavorites(this);
   }
@@ -376,6 +422,8 @@ class _$GetFavoritesImpl implements _GetFavorites {
     TResult? Function(_GetFavorites value)? getFavorites,
     TResult? Function(_StoreFavorite value)? storeFavorite,
     TResult? Function(_RemoteFavorite value)? remoteFavorite,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) {
     return getFavorites?.call(this);
   }
@@ -386,6 +434,8 @@ class _$GetFavoritesImpl implements _GetFavorites {
     TResult Function(_GetFavorites value)? getFavorites,
     TResult Function(_StoreFavorite value)? storeFavorite,
     TResult Function(_RemoteFavorite value)? remoteFavorite,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) {
     if (getFavorites != null) {
@@ -485,6 +535,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     required TResult Function() getFavorites,
     required TResult Function(CharacterDetails detail) storeFavorite,
     required TResult Function(int id) remoteFavorite,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) {
     return storeFavorite(detail);
   }
@@ -495,6 +547,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     TResult? Function()? getFavorites,
     TResult? Function(CharacterDetails detail)? storeFavorite,
     TResult? Function(int id)? remoteFavorite,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) {
     return storeFavorite?.call(detail);
   }
@@ -505,6 +559,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     TResult Function()? getFavorites,
     TResult Function(CharacterDetails detail)? storeFavorite,
     TResult Function(int id)? remoteFavorite,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) {
     if (storeFavorite != null) {
@@ -519,6 +575,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     required TResult Function(_GetFavorites value) getFavorites,
     required TResult Function(_StoreFavorite value) storeFavorite,
     required TResult Function(_RemoteFavorite value) remoteFavorite,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) {
     return storeFavorite(this);
   }
@@ -529,6 +587,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     TResult? Function(_GetFavorites value)? getFavorites,
     TResult? Function(_StoreFavorite value)? storeFavorite,
     TResult? Function(_RemoteFavorite value)? remoteFavorite,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) {
     return storeFavorite?.call(this);
   }
@@ -539,6 +599,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     TResult Function(_GetFavorites value)? getFavorites,
     TResult Function(_StoreFavorite value)? storeFavorite,
     TResult Function(_RemoteFavorite value)? remoteFavorite,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) {
     if (storeFavorite != null) {
@@ -638,6 +700,8 @@ class _$RemoteFavoriteImpl implements _RemoteFavorite {
     required TResult Function() getFavorites,
     required TResult Function(CharacterDetails detail) storeFavorite,
     required TResult Function(int id) remoteFavorite,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) {
     return remoteFavorite(id);
   }
@@ -648,6 +712,8 @@ class _$RemoteFavoriteImpl implements _RemoteFavorite {
     TResult? Function()? getFavorites,
     TResult? Function(CharacterDetails detail)? storeFavorite,
     TResult? Function(int id)? remoteFavorite,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) {
     return remoteFavorite?.call(id);
   }
@@ -658,6 +724,8 @@ class _$RemoteFavoriteImpl implements _RemoteFavorite {
     TResult Function()? getFavorites,
     TResult Function(CharacterDetails detail)? storeFavorite,
     TResult Function(int id)? remoteFavorite,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) {
     if (remoteFavorite != null) {
@@ -672,6 +740,8 @@ class _$RemoteFavoriteImpl implements _RemoteFavorite {
     required TResult Function(_GetFavorites value) getFavorites,
     required TResult Function(_StoreFavorite value) storeFavorite,
     required TResult Function(_RemoteFavorite value) remoteFavorite,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) {
     return remoteFavorite(this);
   }
@@ -682,6 +752,8 @@ class _$RemoteFavoriteImpl implements _RemoteFavorite {
     TResult? Function(_GetFavorites value)? getFavorites,
     TResult? Function(_StoreFavorite value)? storeFavorite,
     TResult? Function(_RemoteFavorite value)? remoteFavorite,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) {
     return remoteFavorite?.call(this);
   }
@@ -692,6 +764,8 @@ class _$RemoteFavoriteImpl implements _RemoteFavorite {
     TResult Function(_GetFavorites value)? getFavorites,
     TResult Function(_StoreFavorite value)? storeFavorite,
     TResult Function(_RemoteFavorite value)? remoteFavorite,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) {
     if (remoteFavorite != null) {
@@ -710,5 +784,333 @@ abstract class _RemoteFavorite implements FavoritesEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoteFavoriteImplCopyWith<_$RemoteFavoriteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SortByImplCopyWith<$Res> {
+  factory _$$SortByImplCopyWith(
+    _$SortByImpl value,
+    $Res Function(_$SortByImpl) then,
+  ) = __$$SortByImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SortOption sortOption});
+}
+
+/// @nodoc
+class __$$SortByImplCopyWithImpl<$Res>
+    extends _$FavoritesEventCopyWithImpl<$Res, _$SortByImpl>
+    implements _$$SortByImplCopyWith<$Res> {
+  __$$SortByImplCopyWithImpl(
+    _$SortByImpl _value,
+    $Res Function(_$SortByImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of FavoritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? sortOption = null}) {
+    return _then(
+      _$SortByImpl(
+        sortOption:
+            null == sortOption
+                ? _value.sortOption
+                : sortOption // ignore: cast_nullable_to_non_nullable
+                    as SortOption,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SortByImpl implements _SortBy {
+  const _$SortByImpl({required this.sortOption});
+
+  @override
+  final SortOption sortOption;
+
+  @override
+  String toString() {
+    return 'FavoritesEvent.sortBy(sortOption: $sortOption)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SortByImpl &&
+            (identical(other.sortOption, sortOption) ||
+                other.sortOption == sortOption));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, sortOption);
+
+  /// Create a copy of FavoritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SortByImplCopyWith<_$SortByImpl> get copyWith =>
+      __$$SortByImplCopyWithImpl<_$SortByImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getFavorites,
+    required TResult Function(CharacterDetails detail) storeFavorite,
+    required TResult Function(int id) remoteFavorite,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
+  }) {
+    return sortBy(sortOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getFavorites,
+    TResult? Function(CharacterDetails detail)? storeFavorite,
+    TResult? Function(int id)? remoteFavorite,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
+  }) {
+    return sortBy?.call(sortOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getFavorites,
+    TResult Function(CharacterDetails detail)? storeFavorite,
+    TResult Function(int id)? remoteFavorite,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
+    required TResult orElse(),
+  }) {
+    if (sortBy != null) {
+      return sortBy(sortOption);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetFavorites value) getFavorites,
+    required TResult Function(_StoreFavorite value) storeFavorite,
+    required TResult Function(_RemoteFavorite value) remoteFavorite,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
+  }) {
+    return sortBy(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetFavorites value)? getFavorites,
+    TResult? Function(_StoreFavorite value)? storeFavorite,
+    TResult? Function(_RemoteFavorite value)? remoteFavorite,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
+  }) {
+    return sortBy?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetFavorites value)? getFavorites,
+    TResult Function(_StoreFavorite value)? storeFavorite,
+    TResult Function(_RemoteFavorite value)? remoteFavorite,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
+    required TResult orElse(),
+  }) {
+    if (sortBy != null) {
+      return sortBy(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SortBy implements FavoritesEvent {
+  const factory _SortBy({required final SortOption sortOption}) = _$SortByImpl;
+
+  SortOption get sortOption;
+
+  /// Create a copy of FavoritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SortByImplCopyWith<_$SortByImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeSortOptionImplCopyWith<$Res> {
+  factory _$$ChangeSortOptionImplCopyWith(
+    _$ChangeSortOptionImpl value,
+    $Res Function(_$ChangeSortOptionImpl) then,
+  ) = __$$ChangeSortOptionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SortOption sortOption});
+}
+
+/// @nodoc
+class __$$ChangeSortOptionImplCopyWithImpl<$Res>
+    extends _$FavoritesEventCopyWithImpl<$Res, _$ChangeSortOptionImpl>
+    implements _$$ChangeSortOptionImplCopyWith<$Res> {
+  __$$ChangeSortOptionImplCopyWithImpl(
+    _$ChangeSortOptionImpl _value,
+    $Res Function(_$ChangeSortOptionImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of FavoritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? sortOption = null}) {
+    return _then(
+      _$ChangeSortOptionImpl(
+        sortOption:
+            null == sortOption
+                ? _value.sortOption
+                : sortOption // ignore: cast_nullable_to_non_nullable
+                    as SortOption,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSortOptionImpl implements _ChangeSortOption {
+  const _$ChangeSortOptionImpl({required this.sortOption});
+
+  @override
+  final SortOption sortOption;
+
+  @override
+  String toString() {
+    return 'FavoritesEvent.changeSortOption(sortOption: $sortOption)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSortOptionImpl &&
+            (identical(other.sortOption, sortOption) ||
+                other.sortOption == sortOption));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, sortOption);
+
+  /// Create a copy of FavoritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSortOptionImplCopyWith<_$ChangeSortOptionImpl> get copyWith =>
+      __$$ChangeSortOptionImplCopyWithImpl<_$ChangeSortOptionImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getFavorites,
+    required TResult Function(CharacterDetails detail) storeFavorite,
+    required TResult Function(int id) remoteFavorite,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
+  }) {
+    return changeSortOption(sortOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getFavorites,
+    TResult? Function(CharacterDetails detail)? storeFavorite,
+    TResult? Function(int id)? remoteFavorite,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
+  }) {
+    return changeSortOption?.call(sortOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getFavorites,
+    TResult Function(CharacterDetails detail)? storeFavorite,
+    TResult Function(int id)? remoteFavorite,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
+    required TResult orElse(),
+  }) {
+    if (changeSortOption != null) {
+      return changeSortOption(sortOption);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetFavorites value) getFavorites,
+    required TResult Function(_StoreFavorite value) storeFavorite,
+    required TResult Function(_RemoteFavorite value) remoteFavorite,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
+  }) {
+    return changeSortOption(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetFavorites value)? getFavorites,
+    TResult? Function(_StoreFavorite value)? storeFavorite,
+    TResult? Function(_RemoteFavorite value)? remoteFavorite,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
+  }) {
+    return changeSortOption?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetFavorites value)? getFavorites,
+    TResult Function(_StoreFavorite value)? storeFavorite,
+    TResult Function(_RemoteFavorite value)? remoteFavorite,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
+    required TResult orElse(),
+  }) {
+    if (changeSortOption != null) {
+      return changeSortOption(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeSortOption implements FavoritesEvent {
+  const factory _ChangeSortOption({required final SortOption sortOption}) =
+      _$ChangeSortOptionImpl;
+
+  SortOption get sortOption;
+
+  /// Create a copy of FavoritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeSortOptionImplCopyWith<_$ChangeSortOptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

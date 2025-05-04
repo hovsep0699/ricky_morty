@@ -13,8 +13,10 @@ import '../../../../domain/use_case/get_favorites_use_case.dart';
 import '../../../../domain/use_case/store_character_use_case.dart';
 import '../../../../domain/use_case/store_favorite_use_case.dart';
 import '../../../../l10n/localizations_utils.dart';
+import '../../../utils/helpers/sort_options.dart';
 import '../../../utils/widget/simple_app_bar_widget.dart';
 import '../../../utils/widget/simple_drawer_widget.dart';
+import '../../../utils/widget/simple_dropdown_widget.dart';
 import '../../internet_checker/bloc/internet_checker_bloc.dart';
 import '../bloc/home_bloc.dart';
 import 'widget/character_list_widget.dart';
@@ -55,6 +57,7 @@ class HomeContentState extends State<HomeContent> {
   @override
   void initState() {
     context.read<HomeBloc>().add(HomeEvent.getCharacters(internetStatus: widget.isOnline));
+    context.read<HomeBloc>().add(const HomeEvent.sortBy(sortOption: SortOption.status));
     super.initState();
   }
 
@@ -93,22 +96,57 @@ class HomeContentState extends State<HomeContent> {
                       homeBloc.add(const HomeEvent.resetPaginationState(pagination: []));
                       homeBloc.add(HomeEvent.getCharacters(internetStatus: widget.isOnline));
                     },
-                    child: Padding(
-                      padding: Gaps.larger.paddingHorizontal,
-                      child: BlocBuilder<HomeBloc, HomeState>(
-                        builder:
-                            (context, state) => CharacterListWidget(
-                              state: state,
-                              onLoadMore: () {
-                                homeBloc.add(
-                                  HomeEvent.loadMoreCharacters(
-                                    internetStatus: widget.isOnline,
-                                    page: state.currentPage + 1,
+                    child: Column(
+                      children: [
+                          Container(
+                          padding: Gaps.large.paddingHorizontal,
+                          height: 100,
+                          child: Row(
+                            children: [
+                              Text(
+                                'Sort By',
+                                style: body1.copyWith(color: ColorScheme.of(context).tertiary),
+                              ),
+                              SimpleDropDownButton<SortOption>(
+                                selectedItem: context.select<HomeBloc, SortOption>(
+                                  (bloc) => bloc.state.selectedSortOption,
+                                ),
+                                items: SortOption.values,
+                                onChanged: (option) {
+                                  if (option != null) {
+                                    context.read<HomeBloc>().add(
+                                      HomeEvent.changeSortOption(sortOption: option),
+                                    );
+                                    context.read<HomeBloc>().add(
+                                      HomeEvent.sortBy(sortOption: option),
+                                    );
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Gaps.large.spaceVertical,
+                        Expanded(
+                          child: Padding(
+                            padding: Gaps.larger.paddingHorizontal,
+                            child: BlocBuilder<HomeBloc, HomeState>(
+                              builder:
+                                  (context, state) => CharacterListWidget(
+                                    state: state,
+                                    onLoadMore: () {
+                                      homeBloc.add(
+                                        HomeEvent.loadMoreCharacters(
+                                          internetStatus: widget.isOnline,
+                                          page: state.currentPage + 1,
+                                        ),
+                                      );
+                                    },
                                   ),
-                                );
-                              },
                             ),
-                      ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
         ),

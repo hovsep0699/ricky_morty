@@ -6,6 +6,7 @@ class FavoritesState with _$FavoritesState {
   const factory FavoritesState({
     @Default(FavoritesStatus.initial) FavoritesStatus status,
     @Default([]) List<CharacterDetails> favorites,
+    @Default(SortOption.status) selectedSortOption,
     String? errorMessage
   }) = _Initial;
 }

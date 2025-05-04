@@ -10,6 +10,7 @@ class HomeState with _$HomeState {
     @Default(4) int maxLength,
     @Default(1) int currentPage,
     @Default(false) bool isLoadingMore,
+    @Default(SortOption.status) SortOption selectedSortOption,
     @Default([]) List<CharacterDetails> paginatedCharacters,
     String? errorMessage,
   }) = _Initial;

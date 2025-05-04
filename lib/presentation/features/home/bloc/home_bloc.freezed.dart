@@ -26,6 +26,8 @@ mixin _$HomeEvent {
     changePagination,
     required TResult Function(List<CharacterDetails> pagination)
     resetPaginationState,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -34,6 +36,8 @@ mixin _$HomeEvent {
     TResult? Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult? Function(List<CharacterDetails> pagination)? changePagination,
     TResult? Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -42,6 +46,8 @@ mixin _$HomeEvent {
     TResult Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult Function(List<CharacterDetails> pagination)? changePagination,
     TResult Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +57,8 @@ mixin _$HomeEvent {
     required TResult Function(_LoadMoreCharacters value) loadMoreCharacters,
     required TResult Function(_ChangePagination value) changePagination,
     required TResult Function(_ResetPagination value) resetPaginationState,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -59,6 +67,8 @@ mixin _$HomeEvent {
     TResult? Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult? Function(_ChangePagination value)? changePagination,
     TResult? Function(_ResetPagination value)? resetPaginationState,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -67,6 +77,8 @@ mixin _$HomeEvent {
     TResult Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult Function(_ChangePagination value)? changePagination,
     TResult Function(_ResetPagination value)? resetPaginationState,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -170,6 +182,8 @@ class _$GetCharactersImpl implements _GetCharacters {
     changePagination,
     required TResult Function(List<CharacterDetails> pagination)
     resetPaginationState,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) {
     return getCharacters(internetStatus);
   }
@@ -182,6 +196,8 @@ class _$GetCharactersImpl implements _GetCharacters {
     TResult? Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult? Function(List<CharacterDetails> pagination)? changePagination,
     TResult? Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) {
     return getCharacters?.call(internetStatus);
   }
@@ -194,6 +210,8 @@ class _$GetCharactersImpl implements _GetCharacters {
     TResult Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult Function(List<CharacterDetails> pagination)? changePagination,
     TResult Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) {
     if (getCharacters != null) {
@@ -210,6 +228,8 @@ class _$GetCharactersImpl implements _GetCharacters {
     required TResult Function(_LoadMoreCharacters value) loadMoreCharacters,
     required TResult Function(_ChangePagination value) changePagination,
     required TResult Function(_ResetPagination value) resetPaginationState,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) {
     return getCharacters(this);
   }
@@ -222,6 +242,8 @@ class _$GetCharactersImpl implements _GetCharacters {
     TResult? Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult? Function(_ChangePagination value)? changePagination,
     TResult? Function(_ResetPagination value)? resetPaginationState,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) {
     return getCharacters?.call(this);
   }
@@ -234,6 +256,8 @@ class _$GetCharactersImpl implements _GetCharacters {
     TResult Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult Function(_ChangePagination value)? changePagination,
     TResult Function(_ResetPagination value)? resetPaginationState,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) {
     if (getCharacters != null) {
@@ -346,6 +370,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     changePagination,
     required TResult Function(List<CharacterDetails> pagination)
     resetPaginationState,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) {
     return storeFavorite(details);
   }
@@ -358,6 +384,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     TResult? Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult? Function(List<CharacterDetails> pagination)? changePagination,
     TResult? Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) {
     return storeFavorite?.call(details);
   }
@@ -370,6 +398,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     TResult Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult Function(List<CharacterDetails> pagination)? changePagination,
     TResult Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) {
     if (storeFavorite != null) {
@@ -386,6 +416,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     required TResult Function(_LoadMoreCharacters value) loadMoreCharacters,
     required TResult Function(_ChangePagination value) changePagination,
     required TResult Function(_ResetPagination value) resetPaginationState,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) {
     return storeFavorite(this);
   }
@@ -398,6 +430,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     TResult? Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult? Function(_ChangePagination value)? changePagination,
     TResult? Function(_ResetPagination value)? resetPaginationState,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) {
     return storeFavorite?.call(this);
   }
@@ -410,6 +444,8 @@ class _$StoreFavoriteImpl implements _StoreFavorite {
     TResult Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult Function(_ChangePagination value)? changePagination,
     TResult Function(_ResetPagination value)? resetPaginationState,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) {
     if (storeFavorite != null) {
@@ -525,6 +561,8 @@ class _$LoadMoreCharactersImpl implements _LoadMoreCharacters {
     changePagination,
     required TResult Function(List<CharacterDetails> pagination)
     resetPaginationState,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) {
     return loadMoreCharacters(internetStatus, page);
   }
@@ -537,6 +575,8 @@ class _$LoadMoreCharactersImpl implements _LoadMoreCharacters {
     TResult? Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult? Function(List<CharacterDetails> pagination)? changePagination,
     TResult? Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) {
     return loadMoreCharacters?.call(internetStatus, page);
   }
@@ -549,6 +589,8 @@ class _$LoadMoreCharactersImpl implements _LoadMoreCharacters {
     TResult Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult Function(List<CharacterDetails> pagination)? changePagination,
     TResult Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) {
     if (loadMoreCharacters != null) {
@@ -565,6 +607,8 @@ class _$LoadMoreCharactersImpl implements _LoadMoreCharacters {
     required TResult Function(_LoadMoreCharacters value) loadMoreCharacters,
     required TResult Function(_ChangePagination value) changePagination,
     required TResult Function(_ResetPagination value) resetPaginationState,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) {
     return loadMoreCharacters(this);
   }
@@ -577,6 +621,8 @@ class _$LoadMoreCharactersImpl implements _LoadMoreCharacters {
     TResult? Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult? Function(_ChangePagination value)? changePagination,
     TResult? Function(_ResetPagination value)? resetPaginationState,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) {
     return loadMoreCharacters?.call(this);
   }
@@ -589,6 +635,8 @@ class _$LoadMoreCharactersImpl implements _LoadMoreCharacters {
     TResult Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult Function(_ChangePagination value)? changePagination,
     TResult Function(_ResetPagination value)? resetPaginationState,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) {
     if (loadMoreCharacters != null) {
@@ -708,6 +756,8 @@ class _$ChangePaginationImpl implements _ChangePagination {
     changePagination,
     required TResult Function(List<CharacterDetails> pagination)
     resetPaginationState,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) {
     return changePagination(pagination);
   }
@@ -720,6 +770,8 @@ class _$ChangePaginationImpl implements _ChangePagination {
     TResult? Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult? Function(List<CharacterDetails> pagination)? changePagination,
     TResult? Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) {
     return changePagination?.call(pagination);
   }
@@ -732,6 +784,8 @@ class _$ChangePaginationImpl implements _ChangePagination {
     TResult Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult Function(List<CharacterDetails> pagination)? changePagination,
     TResult Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) {
     if (changePagination != null) {
@@ -748,6 +802,8 @@ class _$ChangePaginationImpl implements _ChangePagination {
     required TResult Function(_LoadMoreCharacters value) loadMoreCharacters,
     required TResult Function(_ChangePagination value) changePagination,
     required TResult Function(_ResetPagination value) resetPaginationState,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) {
     return changePagination(this);
   }
@@ -760,6 +816,8 @@ class _$ChangePaginationImpl implements _ChangePagination {
     TResult? Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult? Function(_ChangePagination value)? changePagination,
     TResult? Function(_ResetPagination value)? resetPaginationState,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) {
     return changePagination?.call(this);
   }
@@ -772,6 +830,8 @@ class _$ChangePaginationImpl implements _ChangePagination {
     TResult Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult Function(_ChangePagination value)? changePagination,
     TResult Function(_ResetPagination value)? resetPaginationState,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) {
     if (changePagination != null) {
@@ -889,6 +949,8 @@ class _$ResetPaginationImpl implements _ResetPagination {
     changePagination,
     required TResult Function(List<CharacterDetails> pagination)
     resetPaginationState,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
   }) {
     return resetPaginationState(pagination);
   }
@@ -901,6 +963,8 @@ class _$ResetPaginationImpl implements _ResetPagination {
     TResult? Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult? Function(List<CharacterDetails> pagination)? changePagination,
     TResult? Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
   }) {
     return resetPaginationState?.call(pagination);
   }
@@ -913,6 +977,8 @@ class _$ResetPaginationImpl implements _ResetPagination {
     TResult Function(bool internetStatus, int page)? loadMoreCharacters,
     TResult Function(List<CharacterDetails> pagination)? changePagination,
     TResult Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
     required TResult orElse(),
   }) {
     if (resetPaginationState != null) {
@@ -929,6 +995,8 @@ class _$ResetPaginationImpl implements _ResetPagination {
     required TResult Function(_LoadMoreCharacters value) loadMoreCharacters,
     required TResult Function(_ChangePagination value) changePagination,
     required TResult Function(_ResetPagination value) resetPaginationState,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
   }) {
     return resetPaginationState(this);
   }
@@ -941,6 +1009,8 @@ class _$ResetPaginationImpl implements _ResetPagination {
     TResult? Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult? Function(_ChangePagination value)? changePagination,
     TResult? Function(_ResetPagination value)? resetPaginationState,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
   }) {
     return resetPaginationState?.call(this);
   }
@@ -953,6 +1023,8 @@ class _$ResetPaginationImpl implements _ResetPagination {
     TResult Function(_LoadMoreCharacters value)? loadMoreCharacters,
     TResult Function(_ChangePagination value)? changePagination,
     TResult Function(_ResetPagination value)? resetPaginationState,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
     required TResult orElse(),
   }) {
     if (resetPaginationState != null) {
@@ -977,6 +1049,362 @@ abstract class _ResetPagination implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$SortByImplCopyWith<$Res> {
+  factory _$$SortByImplCopyWith(
+    _$SortByImpl value,
+    $Res Function(_$SortByImpl) then,
+  ) = __$$SortByImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SortOption sortOption});
+}
+
+/// @nodoc
+class __$$SortByImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$SortByImpl>
+    implements _$$SortByImplCopyWith<$Res> {
+  __$$SortByImplCopyWithImpl(
+    _$SortByImpl _value,
+    $Res Function(_$SortByImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? sortOption = null}) {
+    return _then(
+      _$SortByImpl(
+        sortOption:
+            null == sortOption
+                ? _value.sortOption
+                : sortOption // ignore: cast_nullable_to_non_nullable
+                    as SortOption,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SortByImpl implements _SortBy {
+  const _$SortByImpl({required this.sortOption});
+
+  @override
+  final SortOption sortOption;
+
+  @override
+  String toString() {
+    return 'HomeEvent.sortBy(sortOption: $sortOption)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SortByImpl &&
+            (identical(other.sortOption, sortOption) ||
+                other.sortOption == sortOption));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, sortOption);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SortByImplCopyWith<_$SortByImpl> get copyWith =>
+      __$$SortByImplCopyWithImpl<_$SortByImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool internetStatus) getCharacters,
+    required TResult Function(CharacterDetails details) storeFavorite,
+    required TResult Function(bool internetStatus, int page) loadMoreCharacters,
+    required TResult Function(List<CharacterDetails> pagination)
+    changePagination,
+    required TResult Function(List<CharacterDetails> pagination)
+    resetPaginationState,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
+  }) {
+    return sortBy(sortOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool internetStatus)? getCharacters,
+    TResult? Function(CharacterDetails details)? storeFavorite,
+    TResult? Function(bool internetStatus, int page)? loadMoreCharacters,
+    TResult? Function(List<CharacterDetails> pagination)? changePagination,
+    TResult? Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
+  }) {
+    return sortBy?.call(sortOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool internetStatus)? getCharacters,
+    TResult Function(CharacterDetails details)? storeFavorite,
+    TResult Function(bool internetStatus, int page)? loadMoreCharacters,
+    TResult Function(List<CharacterDetails> pagination)? changePagination,
+    TResult Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
+    required TResult orElse(),
+  }) {
+    if (sortBy != null) {
+      return sortBy(sortOption);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCharacters value) getCharacters,
+    required TResult Function(_StoreFavorite value) storeFavorite,
+    required TResult Function(_LoadMoreCharacters value) loadMoreCharacters,
+    required TResult Function(_ChangePagination value) changePagination,
+    required TResult Function(_ResetPagination value) resetPaginationState,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
+  }) {
+    return sortBy(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCharacters value)? getCharacters,
+    TResult? Function(_StoreFavorite value)? storeFavorite,
+    TResult? Function(_LoadMoreCharacters value)? loadMoreCharacters,
+    TResult? Function(_ChangePagination value)? changePagination,
+    TResult? Function(_ResetPagination value)? resetPaginationState,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
+  }) {
+    return sortBy?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCharacters value)? getCharacters,
+    TResult Function(_StoreFavorite value)? storeFavorite,
+    TResult Function(_LoadMoreCharacters value)? loadMoreCharacters,
+    TResult Function(_ChangePagination value)? changePagination,
+    TResult Function(_ResetPagination value)? resetPaginationState,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
+    required TResult orElse(),
+  }) {
+    if (sortBy != null) {
+      return sortBy(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SortBy implements HomeEvent {
+  const factory _SortBy({required final SortOption sortOption}) = _$SortByImpl;
+
+  SortOption get sortOption;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SortByImplCopyWith<_$SortByImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeSortOptionImplCopyWith<$Res> {
+  factory _$$ChangeSortOptionImplCopyWith(
+    _$ChangeSortOptionImpl value,
+    $Res Function(_$ChangeSortOptionImpl) then,
+  ) = __$$ChangeSortOptionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SortOption sortOption});
+}
+
+/// @nodoc
+class __$$ChangeSortOptionImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$ChangeSortOptionImpl>
+    implements _$$ChangeSortOptionImplCopyWith<$Res> {
+  __$$ChangeSortOptionImplCopyWithImpl(
+    _$ChangeSortOptionImpl _value,
+    $Res Function(_$ChangeSortOptionImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? sortOption = null}) {
+    return _then(
+      _$ChangeSortOptionImpl(
+        sortOption:
+            null == sortOption
+                ? _value.sortOption
+                : sortOption // ignore: cast_nullable_to_non_nullable
+                    as SortOption,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSortOptionImpl implements _ChangeSortOption {
+  const _$ChangeSortOptionImpl({required this.sortOption});
+
+  @override
+  final SortOption sortOption;
+
+  @override
+  String toString() {
+    return 'HomeEvent.changeSortOption(sortOption: $sortOption)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSortOptionImpl &&
+            (identical(other.sortOption, sortOption) ||
+                other.sortOption == sortOption));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, sortOption);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSortOptionImplCopyWith<_$ChangeSortOptionImpl> get copyWith =>
+      __$$ChangeSortOptionImplCopyWithImpl<_$ChangeSortOptionImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool internetStatus) getCharacters,
+    required TResult Function(CharacterDetails details) storeFavorite,
+    required TResult Function(bool internetStatus, int page) loadMoreCharacters,
+    required TResult Function(List<CharacterDetails> pagination)
+    changePagination,
+    required TResult Function(List<CharacterDetails> pagination)
+    resetPaginationState,
+    required TResult Function(SortOption sortOption) sortBy,
+    required TResult Function(SortOption sortOption) changeSortOption,
+  }) {
+    return changeSortOption(sortOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool internetStatus)? getCharacters,
+    TResult? Function(CharacterDetails details)? storeFavorite,
+    TResult? Function(bool internetStatus, int page)? loadMoreCharacters,
+    TResult? Function(List<CharacterDetails> pagination)? changePagination,
+    TResult? Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult? Function(SortOption sortOption)? sortBy,
+    TResult? Function(SortOption sortOption)? changeSortOption,
+  }) {
+    return changeSortOption?.call(sortOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool internetStatus)? getCharacters,
+    TResult Function(CharacterDetails details)? storeFavorite,
+    TResult Function(bool internetStatus, int page)? loadMoreCharacters,
+    TResult Function(List<CharacterDetails> pagination)? changePagination,
+    TResult Function(List<CharacterDetails> pagination)? resetPaginationState,
+    TResult Function(SortOption sortOption)? sortBy,
+    TResult Function(SortOption sortOption)? changeSortOption,
+    required TResult orElse(),
+  }) {
+    if (changeSortOption != null) {
+      return changeSortOption(sortOption);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCharacters value) getCharacters,
+    required TResult Function(_StoreFavorite value) storeFavorite,
+    required TResult Function(_LoadMoreCharacters value) loadMoreCharacters,
+    required TResult Function(_ChangePagination value) changePagination,
+    required TResult Function(_ResetPagination value) resetPaginationState,
+    required TResult Function(_SortBy value) sortBy,
+    required TResult Function(_ChangeSortOption value) changeSortOption,
+  }) {
+    return changeSortOption(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCharacters value)? getCharacters,
+    TResult? Function(_StoreFavorite value)? storeFavorite,
+    TResult? Function(_LoadMoreCharacters value)? loadMoreCharacters,
+    TResult? Function(_ChangePagination value)? changePagination,
+    TResult? Function(_ResetPagination value)? resetPaginationState,
+    TResult? Function(_SortBy value)? sortBy,
+    TResult? Function(_ChangeSortOption value)? changeSortOption,
+  }) {
+    return changeSortOption?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCharacters value)? getCharacters,
+    TResult Function(_StoreFavorite value)? storeFavorite,
+    TResult Function(_LoadMoreCharacters value)? loadMoreCharacters,
+    TResult Function(_ChangePagination value)? changePagination,
+    TResult Function(_ResetPagination value)? resetPaginationState,
+    TResult Function(_SortBy value)? sortBy,
+    TResult Function(_ChangeSortOption value)? changeSortOption,
+    required TResult orElse(),
+  }) {
+    if (changeSortOption != null) {
+      return changeSortOption(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeSortOption implements HomeEvent {
+  const factory _ChangeSortOption({required final SortOption sortOption}) =
+      _$ChangeSortOptionImpl;
+
+  SortOption get sortOption;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeSortOptionImplCopyWith<_$ChangeSortOptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HomeState {
   HomeStatus get status => throw _privateConstructorUsedError;
   Character? get charactersData => throw _privateConstructorUsedError;
@@ -985,6 +1413,7 @@ mixin _$HomeState {
   int get maxLength => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
   bool get isLoadingMore => throw _privateConstructorUsedError;
+  SortOption get selectedSortOption => throw _privateConstructorUsedError;
   List<CharacterDetails> get paginatedCharacters =>
       throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
@@ -1008,6 +1437,7 @@ abstract class $HomeStateCopyWith<$Res> {
     int maxLength,
     int currentPage,
     bool isLoadingMore,
+    SortOption selectedSortOption,
     List<CharacterDetails> paginatedCharacters,
     String? errorMessage,
   });
@@ -1036,6 +1466,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? maxLength = null,
     Object? currentPage = null,
     Object? isLoadingMore = null,
+    Object? selectedSortOption = null,
     Object? paginatedCharacters = null,
     Object? errorMessage = freezed,
   }) {
@@ -1071,6 +1502,11 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
                     ? _value.isLoadingMore
                     : isLoadingMore // ignore: cast_nullable_to_non_nullable
                         as bool,
+            selectedSortOption:
+                null == selectedSortOption
+                    ? _value.selectedSortOption
+                    : selectedSortOption // ignore: cast_nullable_to_non_nullable
+                        as SortOption,
             paginatedCharacters:
                 null == paginatedCharacters
                     ? _value.paginatedCharacters
@@ -1117,6 +1553,7 @@ abstract class _$$InitialImplCopyWith<$Res>
     int maxLength,
     int currentPage,
     bool isLoadingMore,
+    SortOption selectedSortOption,
     List<CharacterDetails> paginatedCharacters,
     String? errorMessage,
   });
@@ -1145,6 +1582,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? maxLength = null,
     Object? currentPage = null,
     Object? isLoadingMore = null,
+    Object? selectedSortOption = null,
     Object? paginatedCharacters = null,
     Object? errorMessage = freezed,
   }) {
@@ -1180,6 +1618,11 @@ class __$$InitialImplCopyWithImpl<$Res>
                 ? _value.isLoadingMore
                 : isLoadingMore // ignore: cast_nullable_to_non_nullable
                     as bool,
+        selectedSortOption:
+            null == selectedSortOption
+                ? _value.selectedSortOption
+                : selectedSortOption // ignore: cast_nullable_to_non_nullable
+                    as SortOption,
         paginatedCharacters:
             null == paginatedCharacters
                 ? _value._paginatedCharacters
@@ -1205,6 +1648,7 @@ class _$InitialImpl implements _Initial {
     this.maxLength = 4,
     this.currentPage = 1,
     this.isLoadingMore = false,
+    this.selectedSortOption = SortOption.status,
     final List<CharacterDetails> paginatedCharacters = const [],
     this.errorMessage,
   }) : _cachedFavorites = cachedFavorites,
@@ -1233,6 +1677,9 @@ class _$InitialImpl implements _Initial {
   @override
   @JsonKey()
   final bool isLoadingMore;
+  @override
+  @JsonKey()
+  final SortOption selectedSortOption;
   final List<CharacterDetails> _paginatedCharacters;
   @override
   @JsonKey()
@@ -1248,7 +1695,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'HomeState(status: $status, charactersData: $charactersData, cachedFavorites: $cachedFavorites, maxLength: $maxLength, currentPage: $currentPage, isLoadingMore: $isLoadingMore, paginatedCharacters: $paginatedCharacters, errorMessage: $errorMessage)';
+    return 'HomeState(status: $status, charactersData: $charactersData, cachedFavorites: $cachedFavorites, maxLength: $maxLength, currentPage: $currentPage, isLoadingMore: $isLoadingMore, selectedSortOption: $selectedSortOption, paginatedCharacters: $paginatedCharacters, errorMessage: $errorMessage)';
   }
 
   @override
@@ -1269,6 +1716,8 @@ class _$InitialImpl implements _Initial {
                 other.currentPage == currentPage) &&
             (identical(other.isLoadingMore, isLoadingMore) ||
                 other.isLoadingMore == isLoadingMore) &&
+            (identical(other.selectedSortOption, selectedSortOption) ||
+                other.selectedSortOption == selectedSortOption) &&
             const DeepCollectionEquality().equals(
               other._paginatedCharacters,
               _paginatedCharacters,
@@ -1286,6 +1735,7 @@ class _$InitialImpl implements _Initial {
     maxLength,
     currentPage,
     isLoadingMore,
+    selectedSortOption,
     const DeepCollectionEquality().hash(_paginatedCharacters),
     errorMessage,
   );
@@ -1307,6 +1757,7 @@ abstract class _Initial implements HomeState {
     final int maxLength,
     final int currentPage,
     final bool isLoadingMore,
+    final SortOption selectedSortOption,
     final List<CharacterDetails> paginatedCharacters,
     final String? errorMessage,
   }) = _$InitialImpl;
@@ -1323,6 +1774,8 @@ abstract class _Initial implements HomeState {
   int get currentPage;
   @override
   bool get isLoadingMore;
+  @override
+  SortOption get selectedSortOption;
   @override
   List<CharacterDetails> get paginatedCharacters;
   @override

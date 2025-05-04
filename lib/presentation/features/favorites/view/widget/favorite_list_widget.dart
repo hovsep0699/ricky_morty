@@ -18,12 +18,12 @@ class AnimatedFavoritesList extends StatefulWidget {
 
 class _AnimatedFavoritesListState extends State<AnimatedFavoritesList> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
-  final List<CharacterDetails> _animatedFavorites = [];
+  final ValueNotifier<List<CharacterDetails>> _animatedFavorites = ValueNotifier<List<CharacterDetails>>([]);
 
   @override
   void initState() {
     super.initState();
-    _animatedFavorites.addAll(widget.favorites);
+    _animatedFavorites.value.addAll(widget.favorites);
   }
 
   @override
@@ -40,16 +40,16 @@ class _AnimatedFavoritesListState extends State<AnimatedFavoritesList> {
     final addedIds = newIds.difference(oldIds);
 
     for (final id in removedIds) {
-      final index = _animatedFavorites.indexWhere((e) => e.id == id);
+      final index = _animatedFavorites.value.indexWhere((e) => e.id == id);
       if (index != -1) {
-        final removedItem = _animatedFavorites.removeAt(index);
+        final removedItem = _animatedFavorites.value.removeAt(index);
         _listKey.currentState?.removeItem(
           index,
           (context, animation) => buildAnimatedFavoriteItem(
             detail: removedItem,
             animation: animation,
-            animatedFavorites: _animatedFavorites,
-            onRemove: () => widget.onRemove(_animatedFavorites[index]),
+            animatedFavorites: _animatedFavorites.value,
+            onRemove: () => widget.onRemove(_animatedFavorites.value[index]),
           ),
         );
       }
@@ -57,8 +57,16 @@ class _AnimatedFavoritesListState extends State<AnimatedFavoritesList> {
 
     for (final id in addedIds) {
       final item = newList.firstWhere((e) => e.id == id);
-      _animatedFavorites.insert(0, item);
+      _animatedFavorites.value.insert(0, item);
       _listKey.currentState?.insertItem(0);
+    }
+    if (removedIds.isEmpty && addedIds.isEmpty) {
+      // Rebuild list based on new sorted order
+      setState(() {
+        _animatedFavorites.value
+          ..clear()
+          ..addAll(newList);
+      });
     }
   }
 
@@ -67,17 +75,19 @@ class _AnimatedFavoritesListState extends State<AnimatedFavoritesList> {
     if (widget.favorites.isEmpty) {
       return Center(child: Text(appLocalizations.lblEmptyFavorites, style: body1.copyWith(color: ColorScheme.of(context).tertiary)));
     }
-    return AnimatedList(
+    return  ValueListenableBuilder<List<CharacterDetails>>(
+        valueListenable: _animatedFavorites,
+        builder: (context, favorites, _) => AnimatedList(
       key: _listKey,
-      initialItemCount: _animatedFavorites.length,
+      initialItemCount: favorites.length,
       itemBuilder: (context, index, animation) {
         return buildAnimatedFavoriteItem(
-          detail: _animatedFavorites[index],
+          detail: favorites[index],
           animation: animation,
-          animatedFavorites: _animatedFavorites,
-          onRemove: () => widget.onRemove(_animatedFavorites[index]),
+          animatedFavorites: favorites,
+          onRemove: () => widget.onRemove(favorites[index]),
         );
       },
-    );
+    ));
   }
 }
