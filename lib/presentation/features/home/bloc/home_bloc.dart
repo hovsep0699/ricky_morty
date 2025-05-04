@@ -11,6 +11,8 @@ import '../../../../domain/use_case/get_character_use_case.dart';
 import '../../../../domain/use_case/get_favorites_use_case.dart';
 import '../../../../domain/use_case/store_character_use_case.dart';
 import '../../../../domain/use_case/store_favorite_use_case.dart';
+import '../../../utils/helpers/sort_functions.dart';
+import '../../../utils/helpers/sort_options.dart';
 
 part 'home_event.dart';
 
@@ -26,11 +28,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     this.storeCharacterUseCase,
     this.getCachedCharacterUseCase,
   ) : super(const _Initial()) {
+
     on<_GetCharacters>(_onGetCharacters);
     on<_StoreFavorite>(_onStoreFavorite);
     on<_LoadMoreCharacters>(_onLoadMoreCharacters);
     on<_ChangePagination>(_onChangePagination);
     on<_ResetPagination>(_onRestPagination);
+    on<_ChangeSortOption>(_onChangeSortOption);
+    on<_SortBy>(_onSortBy);
   }
 
   final GetCharactersUseCase getCharactersUseCase;
@@ -39,12 +44,34 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetFavoritesUseCase getFavoritesUseCase;
   final GetCachedCharacterUseCase getCachedCharacterUseCase;
 
-  int len = 0;
-  int len2 = 0;
+  Future<void> _onChangeSortOption(_ChangeSortOption event, Emitter<HomeState> emit) async {
+    emit(state.copyWith(selectedSortOption: event.sortOption));
+  }
+
+  Future<void> _onSortBy(_SortBy event, Emitter<HomeState> emit) async {
+    final sorted = SortFunctions.sortCharacters(state.paginatedCharacters, event.sortOption);
+    final sorted2 =
+        state.charactersData?.results != null
+            ? SortFunctions.sortCharacters(state.charactersData!.results, event.sortOption)
+            : <CharacterDetails>[];
+    emit(
+      state.copyWith(
+        paginatedCharacters: sorted,
+        charactersData: state.charactersData?.copyWith(results: sorted2),
+      ),
+    );
+  }
 
   Future<void> _onRestPagination(_ResetPagination event, Emitter<HomeState> emit) async {
     emit(
-      state.copyWith(paginatedCharacters: [], isLoadingMore: false, currentPage: 1, maxLength: 4, status: HomeStatus.initial),
+      state.copyWith(
+        paginatedCharacters: [],
+        isLoadingMore: false,
+        currentPage: 1,
+        maxLength: 4,
+        status: HomeStatus.initial,
+        selectedSortOption: SortOption.status,
+      ),
     );
   }
 
@@ -113,7 +140,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         );
       },
       onSuccess: (data) {
-        len2 += data?.results.length ?? 0;
         final List<CharacterDetails> lastPag = List<CharacterDetails>.from(
           state.paginatedCharacters,
         );
@@ -131,20 +157,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               paginatedCharacters: lastPag,
             ),
           );
-        }
-        else {
+        } else {
           // print("")
-          emit(state.copyWith(
-            status: HomeStatus.success,
-            charactersData: data,
-            maxLength: Constants.defaultPagination,
-            isLoadingMore: false,
-            paginatedCharacters: lastPag,
-          ));
+          emit(
+            state.copyWith(
+              status: HomeStatus.success,
+              charactersData: data,
+              maxLength: Constants.defaultPagination,
+              isLoadingMore: false,
+              paginatedCharacters: lastPag,
+            ),
+          );
         }
       },
     );
-
   }
 
   Future<void> _handleOnline(int page, Emitter<HomeState> emit) async {
@@ -188,8 +214,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               print('Cache not written ${(e as LocalException).stackTrace}');
             },
             onSuccess: (_) {
-              len += data.results.length;
-              print("Cache successfully written ${len}");
+              print("Cache successfully written");
             },
           );
         }
@@ -202,11 +227,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final List<CharacterDetails> lastPag = List<CharacterDetails>.from(state.paginatedCharacters);
 
     final nextItems =
-    state.charactersData?.results
-        .skip(state.maxLength)
-        .take(Constants.paginationLimit)
-        .toList() ?? [];
-      lastPag.addAll(nextItems);
+        state.charactersData?.results
+            .skip(state.maxLength)
+            .take(Constants.paginationLimit)
+            .toList() ??
+        [];
+    lastPag.addAll(nextItems);
     emit(
       state.copyWith(
         isLoadingMore: false,

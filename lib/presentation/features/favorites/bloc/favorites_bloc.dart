@@ -7,6 +7,8 @@ import '../../../../domain/entity/character.dart';
 import '../../../../domain/use_case/delete_favorite_use_case.dart';
 import '../../../../domain/use_case/get_favorites_use_case.dart';
 import '../../../../domain/use_case/store_favorite_use_case.dart';
+import '../../../utils/helpers/sort_functions.dart';
+import '../../../utils/helpers/sort_options.dart';
 
 part 'favorites_state.dart';
 
@@ -20,11 +22,30 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     on<_StoreFavorite>(_onStoreFavorite);
     on<_GetFavorites>(_onGetFavorites);
     on<_RemoteFavorite>(_onRemoveFavorite);
+    on<_ChangeSortOption>(_onChangeSortOption);
+    on<_SortBy>(_onSortBy);
   }
 
   final StoreFavoriteUseCase storeFavoriteUseCase;
   final GetFavoritesUseCase getFavoritesUseCase;
   final DeleteFavoriteUseCase deleteFavoriteUseCase;
+
+
+  Future<void> _onChangeSortOption(_ChangeSortOption event, Emitter<FavoritesState> emit) async {
+    emit(state.copyWith(selectedSortOption: event.sortOption));
+  }
+
+  Future<void> _onSortBy(_SortBy event, Emitter<FavoritesState> emit) async {
+    final sorted = SortFunctions.sortCharacters(state.favorites, event.sortOption);
+    print("PPPP::: ${sorted.map((e) => e.species)}");
+    emit(
+      state.copyWith(
+        favorites: sorted,
+        selectedSortOption: event.sortOption
+      ),
+    );
+  }
+
 
   Future<void> _onStoreFavorite(_StoreFavorite event, Emitter<FavoritesState> emit) async {
     emit(state.copyWith(status: FavoritesStatus.loading));
@@ -32,7 +53,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     response.when(
       onError: (e) {
         print((e as LocalException).stackTrace);
-        emit(state.copyWith(status: FavoritesStatus.failure, errorMessage: (e as LocalException).stackTrace.toString()));
+        emit(state.copyWith(status: FavoritesStatus.failure, errorMessage: e.stackTrace.toString()));
       },
       onSuccess: (data) {
         final newCache = List<CharacterDetails>.from(state.favorites);
@@ -48,7 +69,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     response.when(
       onError: (e) {
         print((e as LocalException).stackTrace);
-        emit(state.copyWith(status: FavoritesStatus.failure, errorMessage: (e as LocalException).stackTrace.toString()));
+        emit(state.copyWith(status: FavoritesStatus.failure, errorMessage: e.stackTrace.toString()));
       },
       onSuccess: (data) {
         final newCache = List<CharacterDetails>.from(state.favorites);
@@ -64,7 +85,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     response.when(
       onError: (e) {
         print((e as LocalException).stackTrace);
-        emit(state.copyWith(status: FavoritesStatus.failure, errorMessage: (e as LocalException).stackTrace.toString()));
+        emit(state.copyWith(status: FavoritesStatus.failure, errorMessage: e.stackTrace.toString()));
       },
       onSuccess: (data) {
         emit(state.copyWith(status: FavoritesStatus.success, favorites: data));

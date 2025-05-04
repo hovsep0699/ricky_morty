@@ -12,7 +12,9 @@ import '../../../../domain/use_case/delete_favorite_use_case.dart';
 import '../../../../domain/use_case/get_favorites_use_case.dart';
 import '../../../../domain/use_case/store_favorite_use_case.dart';
 import '../../../../l10n/localizations_utils.dart';
+import '../../../utils/helpers/sort_options.dart';
 import '../../../utils/widget/simple_app_bar_widget.dart';
+import '../../../utils/widget/simple_dropdown_widget.dart';
 import '../bloc/favorites_bloc.dart';
 import 'widget/favorite_list_widget.dart';
 
@@ -28,14 +30,26 @@ class FavoritesScreen extends StatelessWidget {
             getIt<StoreFavoriteUseCase>(),
             getIt<GetFavoritesUseCase>(),
             getIt<DeleteFavoriteUseCase>(),
-          )..add(const FavoritesEvent.getFavorites()),
+          ),
       child: const FavoritesContent(),
     );
   }
 }
 
-class FavoritesContent extends StatelessWidget {
+class FavoritesContent extends StatefulWidget {
   const FavoritesContent({super.key});
+
+  @override
+  State<FavoritesContent> createState() => FavoritesContentState();
+}
+
+class FavoritesContentState extends State<FavoritesContent> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<FavoritesBloc>().add(const FavoritesEvent.getFavorites());
+    context.read<FavoritesBloc>().add(const FavoritesEvent.sortBy(sortOption: SortOption.status));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,16 +68,53 @@ class FavoritesContent extends StatelessWidget {
           ),
           onLeadingPress: (_) => context.showSideBar(),
         ),
-        body: Padding(
-          padding: Gaps.larger.paddingHorizontal,
-          child: AnimatedFavoritesList(
-            favorites: context.select<FavoritesBloc, List<CharacterDetails>>(
-              (FavoritesBloc bloc) => bloc.state.favorites,
+        body: Column(
+          children: [
+            Container(
+              padding: Gaps.large.paddingHorizontal,
+              height: 100,
+              child: Row(
+                children: [
+                  Text('Sort By', style: body1.copyWith(color: ColorScheme.of(context).tertiary)),
+                  SimpleDropDownButton<SortOption>(
+                    selectedItem: context.select<FavoritesBloc, SortOption>(
+                      (bloc) => bloc.state.selectedSortOption,
+                    ),
+                    items: SortOption.values,
+                    onChanged: (option) {
+                      print("lll::: $option");
+                      if (option != null) {
+                        context.read<FavoritesBloc>().add(
+                          FavoritesEvent.changeSortOption(sortOption: option),
+                        );
+                        context.read<FavoritesBloc>().add(
+                          FavoritesEvent.sortBy(sortOption: option),
+                        );
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
-            onRemove:
-                (detail) =>
-                    context.read<FavoritesBloc>().add(FavoritesEvent.remoteFavorite(id: detail.id)),
-          ),
+            Gaps.large.spaceVertical,
+            Expanded(
+              child: Padding(
+                padding: Gaps.larger.paddingHorizontal,
+                child: BlocBuilder<FavoritesBloc, FavoritesState>(
+                  builder: (context, state) {
+                    print("LLLL::: ${state.favorites.map((e) => e.gender)}");
+                    return AnimatedFavoritesList(
+                      favorites: state.favorites,
+                      onRemove:
+                          (detail) => context.read<FavoritesBloc>().add(
+                            FavoritesEvent.remoteFavorite(id: detail.id),
+                          ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
