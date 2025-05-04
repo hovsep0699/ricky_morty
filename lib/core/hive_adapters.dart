@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 import '../data/model/local/character_box.dart';
 import '../data/model/local/character_details_box.dart';
+import '../data/model/local/character_location_box.dart';
 import '../data/model/local/favorite_box.dart';
 
 void provideHiveAdapters() {
